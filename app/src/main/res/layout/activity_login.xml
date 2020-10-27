@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+android:background="#FFFFFFFF"
+    android:layout_height="match_parent"
+    tools:context="multi.level.mlm.Registration">
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+
+        android:layout_height="match_parent">
+
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0dp"
+
+                android:gravity="center_horizontal"
+                android:orientation="vertical" >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:gravity="center"
+                    android:layout_marginBottom="20dp"
+                    android:background="@drawable/logback"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="HS Foundation\nMCQ\nQuestionBank"
+                        android:textStyle="italic"
+
+                        android:textSize="18sp"
+                        android:fontFamily="@font/milkynice"
+                        android:gravity="center"
+                        android:layout_marginBottom="15dp"
+                        android:padding="7dp"
+                        android:textColor="#ffff"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+
+                    android:padding="10dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="LOG IN"
+                        android:textStyle="bold"
+                        android:textAllCaps="true"
+                        android:textSize="18sp"
+                        android:fontFamily="@font/milkynice"
+                        android:gravity="center"
+                        android:layout_marginBottom="15dp"
+                        android:padding="7dp"
+                        android:textColor="@color/backcolor"/>
+
+                    <android.support.design.widget.TextInputLayout
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="3dp"
+                        >
+                        <EditText
+
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="#161515"
+                            android:id="@+id/edusnm"
+                            android:singleLine="true"
+                      android:textColorHint="#161515"
+                            android:fontFamily="@font/sf_ui_display_light"
+                            android:hint="Mobile Number"
+                            android:inputType="number"
+                            android:maxLength="10"
+
+                            />
+                    </android.support.design.widget.TextInputLayout>
+
+
+
+                    <android.support.design.widget.TextInputLayout
+                        android:padding="3dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        >
+                        <com.scottyab.showhidepasswordedittext.ShowHidePasswordEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                          android:textColor="#161515"
+                            android:textColorHint="#161515"
+                            android:fontFamily="@font/sf_ui_display_light"
+                            android:id="@+id/edpass"
+                            android:hint="Password"
+                            />
+
+                    </android.support.design.widget.TextInputLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:visibility="gone"
+                        android:orientation="horizontal">
+                        <CheckBox
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/isread"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/txtcondi"
+                            android:textColor="@color/colorPrimary"
+                            android:text="I have read and accept terms &amp; conditions"/>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <Button
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            android:layout_marginTop="15dp"
+                            android:textColor="#ffffff"
+                            android:layout_marginBottom="5dp"
+                            android:id="@+id/btlogin"
+                            android:layout_weight="1"
+                            android:textStyle="bold"
+
+                            android:layout_marginRight="7dp"
+                            android:background="@drawable/buttoncorner"
+                            android:fontFamily="@font/milkynice"
+                            android:text="S u b m i t"/>
+                     <!--   <Button
+                            android:layout_width="match_parent"
+                            android:layout_height="35dp"
+                            android:layout_marginTop="15dp"
+                            android:layout_marginLeft="7dp"
+                            android:textColor="#ffffff"
+                            android:layout_marginBottom="10dp"
+                            android:id="@+id/btclosereg"
+                            android:layout_weight="1"
+                            android:background="@drawable/buttonbackred"
+                            android:fontFamily="sans-serif-condensed"
+                            android:text="Close"/>-->
+                    </LinearLayout>
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Forgot Password ?"
+                    android:textStyle="normal"
+
+                    android:textSize="14sp"
+                    android:fontFamily="@font/sf_ui_display_light"
+                    android:gravity="center"
+                    android:layout_marginBottom="10dp"
+                    android:padding="5dp"
+                    android:textColor="#151616"/>
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Not a member? Create Account"
+                    android:textStyle="normal"
+android:id="@+id/goreg"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/sf_ui_display_semibold"
+                    android:gravity="center"
+                    android:layout_marginBottom="5dp"
+                    android:padding="7dp"
+                    android:textColor="#208FB9"/>
+<ImageView
+    android:layout_width="match_parent"
+    android:layout_height="200dp"
+    android:background="@drawable/backedu"/>
+            </LinearLayout>
+
+
+
+
+    </android.support.v4.widget.NestedScrollView>
+
+</android.support.constraint.ConstraintLayout>

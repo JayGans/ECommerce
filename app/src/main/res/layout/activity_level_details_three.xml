@@ -1,0 +1,441 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="multi.level.mlm.LevelDetails">
+    <android.support.v4.widget.NestedScrollView
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:overScrollMode="never">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <android.support.v7.widget.CardView
+                xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                android:background="#e4e4e4"
+                android:layout_gravity="center"
+                android:layout_margin="5dp"
+                android:layout_width="match_parent"
+                android:visibility="gone"
+                android:id="@+id/cardsuceed3"
+                android:layout_marginTop="0dp"
+
+                android:layout_height="wrap_content"
+                card_view:cardCornerRadius="0dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Congratulation !  "
+                        android:textAllCaps="false"
+
+                        android:textStyle="bold"
+
+                        android:fontFamily="sans-serif"
+                        android:drawablePadding="5dp"
+                        android:textColor="#1ca437"
+                        android:textSize="20dp"
+                        android:gravity="center"
+                        android:padding="7dp"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="You have successfully completed this level."
+                        android:textAllCaps="false"
+                        android:textStyle="normal"
+
+
+                        android:fontFamily="sans-serif"
+
+                        android:textColor="#080808"
+                        android:textSize="12dp"
+                        android:gravity="center"
+                        android:padding="2dp"/>
+                </LinearLayout>
+            </android.support.v7.widget.CardView>
+            <android.support.v7.widget.CardView
+                xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                android:background="#e4e4e4"
+                android:layout_gravity="center"
+                android:layout_marginBottom="5dp"
+                android:layout_width="match_parent"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_height="wrap_content"
+                card_view:cardCornerRadius="0dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:focusableInTouchMode="true"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Instruction"
+                            android:textAllCaps="false"
+                            android:textStyle="bold"
+
+                            android:layout_gravity="left"
+
+                            android:fontFamily="sans-serif"
+                            android:drawablePadding="5dp"
+                            android:textColor="#0a0a0a"
+                            android:textSize="14dp"
+                            android:gravity="center"
+                            android:padding="7dp"/>
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="0.1dp"
+                            android:background="#dcdbdb"/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="If you are not able to complete given target  within given days you will loss the level and you have to start this level from beginning."
+                            android:textAllCaps="false"
+                            android:textStyle="normal"
+                            android:layout_weight="1"
+                            android:layout_gravity="start"
+                            android:drawableLeft="@drawable/ic_finger"
+
+                            android:fontFamily="sans-serif"
+                            android:drawablePadding="5dp"
+                            android:textColor="@color/colorPrimaryDark"
+                            android:textSize="12dp"
+                            android:gravity="left"
+                            android:padding="7dp"/>
+
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="0.1dp"
+                            android:background="#dcdbdb"/>
+                        <!-- <TextView
+                             android:layout_width="wrap_content"
+                             android:layout_height="wrap_content"
+                             android:text="For complete level need 3 member to join within 5 days hurry up."
+                             android:textAllCaps="false"
+                             android:textStyle="bold"
+
+                             android:layout_gravity="left"
+
+                             android:fontFamily="sans-serif"
+                             android:drawablePadding="5dp"
+                             android:textColor="#f2d21c"
+                             android:textSize="14dp"
+                             android:gravity="center"
+                             android:padding="7dp"/>-->
+                    </LinearLayout>
+                </LinearLayout>
+            </android.support.v7.widget.CardView>
+            <android.support.v7.widget.CardView
+                xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                android:background="#e4e4e4"
+                android:layout_gravity="center"
+
+                android:layout_width="match_parent"
+                android:layout_marginTop="3dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_height="wrap_content"
+                card_view:cardCornerRadius="0dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:textAllCaps="false"
+                            android:textStyle="bold"
+                            android:id="@+id/stenddt3"
+                            android:layout_gravity="left"
+
+                            android:fontFamily="sans-serif"
+                            android:drawablePadding="5dp"
+                            android:textColor="#0a0a0a"
+                            android:textSize="14dp"
+                            android:gravity="center"
+                            android:padding="7dp"/>
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="For Complete this level you have to join 10 members within 10 days."
+                            android:textAllCaps="false"
+                            android:textStyle="normal"
+
+                            android:layout_gravity="left"
+
+                            android:fontFamily="sans-serif"
+                            android:drawablePadding="5dp"
+                            android:textColor="#0a0a0a"
+                            android:textSize="14dp"
+                            android:gravity="center"
+                            android:padding="7dp"/>
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="0.1dp"
+                            android:background="#dcdbdb"/>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/joincount3"
+                                android:text=""
+                                android:visibility="gone"
+                                android:textAllCaps="false"
+                                android:textStyle="bold"
+                                android:layout_weight="1"
+                                android:layout_gravity="center"
+
+                                android:fontFamily="sans-serif"
+                                android:drawablePadding="5dp"
+                                android:textColor="@color/colorPrimaryDark"
+                                android:textSize="14dp"
+                                android:gravity="center"
+                                android:padding="7dp"/>
+                            <!--  <View
+                                  android:layout_width="0.5dp"
+                                  android:layout_height="match_parent"
+                                  android:background="#d6d6d6"/>-->
+                            <!--    <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="5 Days Remaining."
+                                    android:textAllCaps="false"
+                                    android:layout_weight="1"
+                                    android:textStyle="bold"
+
+                                    android:layout_gravity="left"
+
+                                    android:fontFamily="sans-serif"
+                                    android:drawablePadding="5dp"
+                                    android:textColor="#1e9abf"
+                                    android:textSize="14dp"
+                                    android:gravity="center"
+                                    android:padding="7dp"/>-->
+                        </LinearLayout>
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="0.1dp"
+                            android:background="#dcdbdb"/>
+                        <!-- <TextView
+                             android:layout_width="wrap_content"
+                             android:layout_height="wrap_content"
+                             android:text="For complete level need 3 member to join within 5 days hurry up."
+                             android:textAllCaps="false"
+                             android:textStyle="bold"
+
+                             android:layout_gravity="left"
+
+                             android:fontFamily="sans-serif"
+                             android:drawablePadding="5dp"
+                             android:textColor="#f2d21c"
+                             android:textSize="14dp"
+                             android:gravity="center"
+                             android:padding="7dp"/>-->
+                    </LinearLayout>
+                </LinearLayout>
+            </android.support.v7.widget.CardView>
+            <!--  <android.support.v7.widget.CardView
+                  xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                  android:background="#e4e4e4"
+                  android:layout_gravity="center"
+
+                  android:layout_width="match_parent"
+                  android:layout_marginTop="5dp"
+          android:layout_marginRight="5dp"
+                  android:layout_marginLeft="5dp"
+                  android:layout_height="wrap_content"
+                  card_view:cardCornerRadius="0dp">
+                  <TextView
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:text="Invite Friends"
+                      android:textAllCaps="false"
+                      android:textStyle="normal"
+
+                      android:layout_gravity="right"
+                      android:drawableRight="@drawable/ic_menu_share"
+                      android:fontFamily="sans-serif"
+                      android:drawablePadding="5dp"
+                      android:textColor="#1ca437"
+                      android:textSize="14dp"
+                      android:gravity="center"
+                      android:padding="7dp"/>
+              </android.support.v7.widget.CardView>-->
+
+
+            <android.support.v7.widget.CardView
+                xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                android:background="#e4e4e4"
+                android:layout_gravity="center"
+                android:layout_width="match_parent"
+
+                android:layout_marginTop="3dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_height="wrap_content"
+                card_view:cardCornerRadius="0dp">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:textSize="16dp"
+                    android:gravity="center"
+                    android:padding="5dp"
+                    android:id="@+id/nijoin3"
+                    android:visibility="gone"
+                    android:textColor="#c2c2c2"
+                    android:text="No any member joined yet !"/>
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/recycler_user3"
+
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="0dp"
+                    android:layout_height="wrap_content"
+                    android:scrollbars="none"
+                    android:padding="0dp"
+                    android:orientation="vertical"
+
+                    />
+            </android.support.v7.widget.CardView>
+            <android.support.v7.widget.CardView
+                xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                android:background="#e4e4e4"
+                android:layout_gravity="center"
+                android:layout_marginBottom="5dp"
+                android:layout_width="match_parent"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_height="wrap_content"
+                card_view:cardCornerRadius="0dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorPrimaryDark"
+                    android:orientation="vertical">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Rewards"
+                            android:textAllCaps="false"
+                            android:textStyle="bold"
+                            android:drawableTop="@drawable/ic_winner"
+                            android:layout_gravity="left"
+
+                            android:fontFamily="sans-serif"
+                            android:drawablePadding="5dp"
+                            android:textColor="#fff"
+                            android:textSize="14dp"
+                            android:gravity="center"
+                            android:padding="7dp"/>
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="0.1dp"
+                            android:background="#dcdbdb"/>
+
+
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="You'll get Rs 150 per member."
+                            android:textAllCaps="false"
+                            android:textStyle="normal"
+                            android:layout_weight="1"
+                            android:layout_gravity="start"
+
+                            android:fontFamily="sans-serif"
+                            android:drawablePadding="5dp"
+                            android:textColor="#fff"
+                            android:textSize="14dp"
+                            android:gravity="center_vertical"
+                            android:drawableLeft="@drawable/ic_winner_small"
+                            android:padding="7dp"/>
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Company will add 10000 member."
+                            android:textAllCaps="false"
+                            android:textStyle="normal"
+                            android:layout_weight="1"
+                            android:layout_gravity="start"
+                            android:fontFamily="sans-serif"
+                            android:drawablePadding="5dp"
+                            android:textColor="#ffffff"
+                            android:textSize="14dp"
+                            android:gravity="center_vertical"
+                            android:drawableLeft="@drawable/ic_winner_small"
+                            android:padding="7dp"/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="You will receive Rs 5000/month for 12 months."
+                            android:textAllCaps="false"
+                            android:textStyle="normal"
+                            android:layout_weight="1"
+                            android:layout_gravity="start"
+                            android:fontFamily="sans-serif"
+                            android:drawablePadding="5dp"
+                            android:textColor="#ffffff"
+                            android:textSize="14dp"
+                            android:gravity="center_vertical"
+                            android:drawableLeft="@drawable/ic_winner_small"
+                            android:padding="7dp"/>
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="0.1dp"
+                            android:background="#dcdbdb"/>
+                        <!-- <TextView
+                             android:layout_width="wrap_content"
+                             android:layout_height="wrap_content"
+                             android:text="For complete level need 3 member to join within 5 days hurry up."
+                             android:textAllCaps="false"
+                             android:textStyle="bold"
+
+                             android:layout_gravity="left"
+
+                             android:fontFamily="sans-serif"
+                             android:drawablePadding="5dp"
+                             android:textColor="#f2d21c"
+                             android:textSize="14dp"
+                             android:gravity="center"
+                             android:padding="7dp"/>-->
+                    </LinearLayout>
+                </LinearLayout>
+            </android.support.v7.widget.CardView>
+
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+</android.support.constraint.ConstraintLayout>

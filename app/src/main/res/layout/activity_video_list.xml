@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="multi.level.mlm.VideoList">
+<android.support.v4.widget.NestedScrollView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:ignore="MissingConstraints">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        tools:ignore="MissingConstraints">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:layout_marginBottom="5dp"
+            android:fontFamily="@font/milkynice"
+            android:textSize="18dp"
+            android:textStyle="bold"
+android:background="@color/colorPrimaryDark"
+            android:gravity="center"
+            android:id="@+id/txttestnm"
+            android:paddingLeft="20dp"
+            android:padding="7dp"
+            android:textColor="#fff"
+            android:text="Topic Name - Chandra Gupt Morya"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:layout_marginBottom="5dp"
+            android:fontFamily="@font/sf_ui_display_medium"
+            android:textSize="12dp"
+            android:textStyle="bold"
+
+            android:gravity="center"
+
+            android:textColor="#535458"
+           android:text="(This is just dumy video there is no any link available)"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.1dp"
+            android:background="#706F6F"/>
+        <VideoView
+            android:id="@+id/videoView1"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="5dp"
+            android:fontFamily="@font/milkynice"
+            android:textSize="18dp"
+            android:textStyle="bold"
+
+            android:gravity="center"
+
+            android:paddingLeft="20dp"
+            android:textColor="#18191F"
+            android:text="About Chandra Gupt Morya"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="5dp"
+            android:fontFamily="@font/sf_ui_display_medium"
+            android:textSize="14dp"
+            android:textStyle="bold"
+
+            android:gravity="start"
+
+            android:paddingLeft="5dp"
+            android:textColor="#535458"
+            android:text="Chandragupta Maurya (reign: 321–297 BCE) was the founder of the Maurya Empire in ancient India. ... According to Jain sources, he later renounced his empire and became a Jain monk. Chandragupta's life and accomplishments are described in ancient Greek, Hindu, Buddhist and Jain texts, but they vary significantly."/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:fontFamily="@font/sf_ui_display_medium"
+            android:textSize="14dp"
+            android:textStyle="bold"
+
+            android:gravity="start"
+
+            android:paddingLeft="5dp"
+            android:textColor="#535458"
+            android:text="                        Chandragupta Maurya (reign: 321–297 BCE) was the founder of the Maurya Empire in ancient India. ... According to Jain sources, he later renounced his empire and became a Jain monk. Chandragupta's life and accomplishments are described in ancient Greek, Hindu, Buddhist and Jain texts, but they vary significantly."/>
+
+    </LinearLayout>
+</android.support.v4.widget.NestedScrollView>
+
+</android.support.constraint.ConstraintLayout>

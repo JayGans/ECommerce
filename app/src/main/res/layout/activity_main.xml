@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:background="#ffffff"
+
+    android:layout_height="match_parent"
+    tools:context="multi.level.mlm.MainActivity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:gravity="center"
+        android:id="@+id/layk"
+android:layout_alignParentTop="true"
+        android:background="@drawable/logback">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="2dp"
+            android:textSize="22sp"
+            android:fontFamily="@font/milkynice"
+android:textStyle="bold"
+            android:textColor="#fff"
+            android:text="Hs Foundation\nMCQ\nQuestionBank"/>
+
+    </LinearLayout>
+
+
+
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="match_parent"
+           android:gravity="center"
+           android:orientation="vertical"
+           android:layout_below="@id/layk"
+android:layout_above="@id/layt"
+           android:padding="50dp"
+           android:background="#fff">
+
+           <Button
+               android:layout_width="match_parent"
+               android:layout_height="38dp"
+               android:textColor="#EB4242"
+               android:gravity="center"
+               android:drawableLeft="@drawable/gmail"
+               android:fontFamily="@font/milkynice"
+               android:text="Login with Google"
+               android:id="@+id/btgoogle"
+               android:background="@drawable/buttonback"/>
+
+           <Button
+               android:layout_width="match_parent"
+               android:layout_height="38dp"
+               android:layout_marginTop="25dp"
+               android:textColor="#3E58A5"
+               android:gravity="center"
+               android:id="@+id/btfb"
+               android:drawableLeft="@drawable/fb"
+               android:fontFamily="@font/milkynice"
+               android:text="Login with Facebook"
+               android:background="@drawable/buttonback_fb"/>
+
+           <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:gravity="center"
+               android:layout_marginTop="20dp"
+               android:layout_marginBottom="10dp"
+               android:orientation="horizontal"
+               >
+
+               <View
+                   android:layout_width="match_parent"
+                   android:layout_height="1dp"
+                   android:layout_weight="1"
+                   android:background="#B3B6B9"/>
+
+               <TextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_marginLeft="10dp"
+                   android:layout_marginRight="10dp"
+                   android:textStyle="bold"
+                   android:textColor="#352B2B"
+                   android:fontFamily="monospace"
+                   android:text="OR"/>
+
+               <View
+                   android:layout_width="match_parent"
+                   android:layout_height="1dp"
+                   android:layout_weight="1"
+                   android:background="#B3B6B9"/>
+
+
+           </LinearLayout>
+           <Button
+               android:layout_width="match_parent"
+               android:layout_height="38dp"
+               android:layout_marginTop="15dp"
+               android:textColor="#2F90E5"
+               android:gravity="center"
+               android:id="@+id/btcrlog"
+               android:drawableLeft="@drawable/account"
+               android:fontFamily="@font/milkynice"
+               android:text="Login Using Credential"
+               android:background="@drawable/buttonback_fb"/>
+
+       </LinearLayout>
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+android:layout_alignParentBottom="true"
+           android:id="@+id/layt"
+           android:paddingBottom="15dp"
+           android:orientation="vertical"
+           android:gravity="bottom"
+           android:background="#fff">
+           <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:orientation="horizontal"
+               android:paddingLeft="10dp"
+               android:paddingRight="10dp"
+               android:gravity="center"
+               android:background="#fff">
+
+               <TextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:padding="2dp"
+                   android:textColor="#2C2626"
+                   android:textSize="13dp"
+                   android:fontFamily="sans-serif-medium"
+                   android:text="By Logging in,you agree to our"/>
+               <TextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:padding="2dp"
+                   android:textSize="13dp"
+                   android:textColor="#1553D1"
+                   android:fontFamily="sans-serif-medium"
+                   android:text="Terms of Service"/>
+               <TextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:padding="2dp"
+                   android:textSize="13dp"
+                   android:textColor="#2C2626"
+                   android:fontFamily="sans-serif-medium"
+                   android:text=" and "/>
+
+           </LinearLayout>
+           <TextView
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:padding="2dp"
+               android:gravity="center"
+               android:textSize="13dp"
+               android:textColor="#1553D1"
+               android:fontFamily="sans-serif-medium"
+               android:text="Privacy Policy"/>
+       </LinearLayout>
+
+</RelativeLayout>

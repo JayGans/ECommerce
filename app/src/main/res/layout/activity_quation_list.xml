@@ -1,0 +1,234 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    tools:context="multi.level.mlm.homepage">
+
+    <!-- TODO: Update blank fragment layout -->
+
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_weight="1"
+        android:layout_height="match_parent"
+
+        card_view:cardBackgroundColor="#FFFFFF"
+        android:id="@+id/cardlevel1"
+        android:elevation="2dp"
+        android:divider="@android:color/transparent"
+
+        card_view:cardElevation="1dp"
+        card_view:cardUseCompatPadding="true"
+        >
+        <android.support.v4.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical" >
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="5dp"
+                    android:fontFamily="@font/milkynice"
+                    android:textSize="18dp"
+                    android:textStyle="bold"
+
+                    android:gravity="center"
+                    android:id="@+id/txttestnm"
+                    android:paddingLeft="20dp"
+                    android:textColor="#18191F"
+                    android:text="Question 1 "/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="#C4C0C0"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="2:00:00"
+                    android:textColor="#4CAF50"
+                    android:id="@+id/txttimer"
+                    android:textStyle="bold"
+                    android:drawablePadding="5dp"
+                    android:drawableLeft="@drawable/ic_timer"
+                    android:layout_gravity="end"
+
+                    android:gravity="center"
+                    android:fontFamily="@font/sf_ui_display_bold"
+                    android:textSize="20dp"
+                    android:padding="5dp"
+                    />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="7dp"
+                    android:id="@+id/layq"
+                    android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text=" What is Activity in android ?"
+                            android:textColor="@color/colorPrimaryDark"
+                            android:textStyle="bold"
+                            android:layout_weight="1"
+                            android:drawableLeft="@drawable/ic_finger"
+                            android:fontFamily="@font/sf_ui_display_bold"
+                            android:textSize="16dp"
+                            android:padding="5dp"
+                            />
+                    </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="A)"
+                            android:textColor="@color/colorPrimaryDark"
+                            android:textStyle="bold"
+
+                            android:fontFamily="@font/sf_ui_display_bold"
+                            android:textSize="16dp"
+                            android:padding="5dp"
+                            />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="B)"
+                            android:textColor="@color/colorPrimaryDark"
+                            android:textStyle="bold"
+
+                            android:fontFamily="@font/sf_ui_display_bold"
+                            android:textSize="16dp"
+                            android:padding="5dp"
+                            />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="C)"
+                            android:textColor="@color/colorPrimaryDark"
+                            android:textStyle="bold"
+
+                            android:fontFamily="@font/sf_ui_display_bold"
+                            android:textSize="16dp"
+                            android:padding="5dp"
+                            />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="D)"
+                            android:textColor="@color/colorPrimaryDark"
+                            android:textStyle="bold"
+
+                            android:fontFamily="@font/sf_ui_display_bold"
+                            android:textSize="16dp"
+                            android:padding="5dp"
+                            />
+
+                    </LinearLayout>
+                  <RadioGroup
+                      android:layout_width="match_parent"
+                      android:orientation="vertical"
+                      android:layout_weight="1"
+                      android:layout_height="wrap_content">
+
+                      <RadioButton
+                          android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:textStyle="bold"
+                          android:text="Activity is user interface"
+                          />
+
+
+                          <RadioButton
+                              android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              android:textStyle="bold"
+                              android:text="Its just Test"
+                              />
+
+
+                          <RadioButton
+                              android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              android:textStyle="bold"
+                              android:text="A &amp; B"
+                              />
+
+
+                          <RadioButton
+                              android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              android:textStyle="bold"
+
+                              android:text="None Of The Above"
+                              />
+
+
+
+
+                  </RadioGroup>
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="#C4C0C0"/>
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingLeft="7dp"
+    android:layout_marginTop="20dp"
+    android:orientation="horizontal">
+
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="P R E V I O U S"
+        android:layout_weight="1"
+        android:layout_marginRight="5dp"
+        android:background="@drawable/buttoncorner"
+        android:textColor="#fff"
+        android:fontFamily="@font/milkynice"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="S U B M I T"
+        android:layout_weight="1"
+        android:layout_marginRight="5dp"
+        android:background="@drawable/buttoncorner_green"
+        android:textColor="#fff"
+        android:fontFamily="@font/milkynice"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="S K I P"
+        android:layout_weight="1"
+        android:layout_marginRight="5dp"
+        android:background="@drawable/buttoncorner_yellow"
+        android:textColor="#fff"
+        android:fontFamily="@font/milkynice"/>
+
+
+</LinearLayout>
+
+
+            </LinearLayout>
+        </android.support.v4.widget.NestedScrollView>
+    </android.support.v7.widget.CardView>
+</FrameLayout>

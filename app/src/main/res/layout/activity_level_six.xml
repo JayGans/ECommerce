@@ -1,0 +1,526 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+
+    android:layout_height="match_parent"
+    tools:context="multi.level.mlm.LevelSix">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+        <android.support.v7.widget.CardView
+            xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:background="#e4e4e4"
+            android:layout_gravity="center"
+            android:layout_marginBottom="5dp"
+            android:layout_width="match_parent"
+            android:layout_marginTop="5dp"
+            card_view:cardBackgroundColor="@color/colorPrimaryDark"
+            android:layout_marginRight="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_height="wrap_content"
+            card_view:cardElevation="3dp"
+            card_view:cardCornerRadius="2dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:gravity="center"
+            android:id="@+id/layviewuser"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+
+                android:textColor="#fff"
+                android:padding="3dp"
+                android:text="Join Members In Individual Level  "/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textSize="16dp"
+                android:textColor="#fff"
+                android:drawableLeft="@drawable/ic_view"
+                android:drawablePadding="5dp"
+android:id="@+id/txtcount1"
+                android:padding="3dp"
+                android:text="0"/>
+
+
+        </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            card_view:cardBackgroundColor="#ffffff"
+            android:layout_gravity="center"
+            android:layout_marginBottom="0dp"
+            android:layout_width="match_parent"
+android:layout_marginTop="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_height="wrap_content"
+            card_view:cardElevation="3dp"
+            card_view:cardCornerRadius="2dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+
+                android:textColor="#fd8600"
+                android:padding="3dp"
+                android:text="Sub-Level-1 (Get Rs.40 on each join)"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textSize="16dp"
+                android:id="@+id/txtcount2"
+                android:drawableLeft="@drawable/ic_account"
+                android:drawablePadding="5dp"
+                android:textColor="#20a748"
+                android:padding="3dp"
+                android:text="0"/>
+        </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                android:background="#e4e4e4"
+                android:layout_gravity="center"
+                android:layout_marginBottom="0dp"
+                android:layout_width="match_parent"
+                android:layout_marginTop="3dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_height="wrap_content"
+                card_view:cardElevation="3dp"
+                card_view:cardCornerRadius="2dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textStyle="bold"
+
+                        android:textColor="#f6f99b31"
+                        android:padding="3dp"
+                        android:text="Sub-Level-2 (Get Rs.30 on each join)"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textStyle="bold"
+                        android:id="@+id/txtcount3"
+                        android:textSize="16dp"
+                        android:drawableLeft="@drawable/ic_account"
+                        android:drawablePadding="5dp"
+                        android:textColor="#20a748"
+                        android:padding="3dp"
+                        android:text="0"/>
+                </LinearLayout>
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                android:background="#e4e4e4"
+                android:layout_gravity="center"
+                android:layout_marginBottom="0dp"
+                android:layout_width="match_parent"
+                android:layout_marginTop="3dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_height="wrap_content"
+                card_view:cardElevation="3dp"
+                card_view:cardCornerRadius="2dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textStyle="bold"
+
+                        android:textColor="#faad56"
+                        android:padding="3dp"
+                        android:text="Sub-Level-3 (Get Rs.20 on each join)"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textStyle="bold"
+                        android:textSize="16dp"
+                        android:id="@+id/txtcount4"
+                        android:drawableLeft="@drawable/ic_account"
+                        android:drawablePadding="5dp"
+                        android:textColor="#20a748"
+                        android:padding="3dp"
+                        android:text="0"/>
+                </LinearLayout>
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                card_view:cardBackgroundColor="#fff"
+                android:layout_gravity="center"
+                android:layout_marginBottom="10dp"
+                android:layout_width="match_parent"
+                android:layout_marginTop="3dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_height="wrap_content"
+                card_view:cardElevation="5dp"
+                card_view:cardCornerRadius="2dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textStyle="bold"
+
+                        android:textColor="#f7b367"
+                        android:padding="3dp"
+                        android:text="Sub-Level-4 (Get Rs.10 on each join)"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textStyle="bold"
+                        android:textSize="16dp"
+                        android:id="@+id/txtcount5"
+                        android:drawableLeft="@drawable/ic_account"
+                        android:drawablePadding="5dp"
+                        android:textColor="#20a748"
+                        android:padding="3dp"
+                        android:text="0"/>
+                </LinearLayout>
+            </android.support.v7.widget.CardView>
+            <android.support.v7.widget.CardView
+                xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                android:background="#e4e4e4"
+                android:layout_gravity="center"
+                android:layout_marginBottom="5dp"
+                android:layout_width="match_parent"
+                android:layout_marginTop="5dp"
+                card_view:cardBackgroundColor="#ffffff"
+                android:layout_marginRight="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_height="wrap_content"
+                card_view:cardElevation="3dp"
+                card_view:cardCornerRadius="2dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+android:padding="5dp"
+                    android:gravity="center"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Sub-Level Rewards"
+                        android:textStyle="bold"
+                        android:gravity="center"
+                        android:textColor="#0a0a0a"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0"
+                        android:id="@+id/txtunderme"
+                        android:padding="3dp"
+                        android:textSize="16dp"
+                        android:drawableLeft="@drawable/ic_account"
+                        android:drawablePadding="7dp"
+                      android:layout_marginTop="5dp"
+                        android:layout_marginBottom="5dp"
+                        android:textStyle="bold"
+                        android:layout_marginRight="3dp"
+                        android:gravity="center"
+                        android:textColor="#20911c"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+android:gravity="center"
+android:layout_marginBottom="7dp"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Rs.750"
+                       android:padding="3dp"
+                        android:background="#e2bbd8ef"
+                        android:id="@+id/txt75"
+                        android:textStyle="bold"
+                        android:layout_marginRight="2dp"
+                        android:gravity="center"
+                        android:textColor="#ffffff"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="-"
+                        android:padding="3dp"
+
+                        android:textStyle="bold"
+                        android:layout_marginRight="2dp"
+                        android:gravity="center"
+                        android:textColor="#0a0a0a"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Rs.5000"
+                        android:padding="3dp"
+                        android:background="#e2bbd8ef"
+                        android:id="@+id/txt50"
+                         android:textStyle="bold"
+                        android:layout_marginRight="2dp"
+                        android:gravity="center"
+                        android:textColor="#ffffff"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="-"
+                        android:padding="3dp"
+
+                        android:textStyle="bold"
+                        android:layout_marginRight="2dp"
+                        android:gravity="center"
+                        android:textColor="#0a0a0a"/> <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Rs.10000"
+                    android:padding="3dp"
+                    android:background="#e2bbd8ef"
+                    android:id="@+id/txt10"
+                    android:textStyle="bold"
+                    android:layout_marginRight="2dp"
+                    android:gravity="center"
+                    android:textColor="#ffffff"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="-"
+                        android:padding="3dp"
+
+                        android:textStyle="bold"
+                        android:layout_marginRight="2dp"
+                        android:gravity="center"
+                        android:textColor="#0a0a0a"/> <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Rs.15000"
+                    android:padding="3dp"
+                    android:background="#e2bbd8ef"
+                    android:id="@+id/txt15"
+                    android:textStyle="bold"
+                    android:layout_marginRight="3dp"
+                    android:gravity="center"
+                    android:textColor="#ffffff"/>
+
+                </LinearLayout>
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+            <android.support.v7.widget.CardView
+                xmlns:card_view="http://schemas.android.com/apk/res-auto"
+
+                android:layout_gravity="center"
+                android:layout_marginBottom="5dp"
+                android:layout_width="match_parent"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_height="wrap_content"
+                card_view:cardElevation="4dp"
+                card_view:cardCornerRadius="2dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorPrimaryDark"
+                    android:orientation="vertical">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Individual Level Rewards"
+                            android:textAllCaps="false"
+                            android:textStyle="bold"
+                            android:drawableTop="@drawable/ic_winner"
+                            android:layout_gravity="left"
+
+                            android:fontFamily="sans-serif"
+                            android:drawablePadding="5dp"
+                            android:textColor="#fff"
+                            android:textSize="14dp"
+                            android:gravity="center"
+                            android:padding="7dp"/>
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="0.1dp"
+                            android:background="#dcdbdb"/>
+
+
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="You'll get Rs.100 per member(First 10 members)"
+                            android:textAllCaps="false"
+                            android:textStyle="normal"
+                            android:layout_weight="1"
+                            android:layout_gravity="start"
+
+                            android:fontFamily="sans-serif"
+                            android:drawablePadding="5dp"
+                            android:textColor="#fff"
+                            android:textSize="14dp"
+                            android:gravity="center_vertical"
+                            android:drawableLeft="@drawable/ic_winner_small"
+                            android:padding="7dp"/>
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="0.1dp"
+                            android:background="#dcdbdb"/>
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="You'll get Rs.125 per member(for Second 10 members)"
+                            android:textAllCaps="false"
+                            android:textStyle="normal"
+                            android:layout_weight="1"
+                            android:layout_gravity="start"
+
+                            android:fontFamily="sans-serif"
+                            android:drawablePadding="5dp"
+                            android:textColor="#fff"
+                            android:textSize="14dp"
+                            android:gravity="center_vertical"
+                            android:drawableLeft="@drawable/ic_winner_small"
+                            android:padding="7dp"/>
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="0.1dp"
+                            android:background="#dcdbdb"/>
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="You'll get Rs.150 per member(for Third 10 members)"
+                            android:textAllCaps="false"
+                            android:textStyle="normal"
+                            android:layout_weight="1"
+                            android:layout_gravity="start"
+
+                            android:fontFamily="sans-serif"
+                            android:drawablePadding="5dp"
+                            android:textColor="#fff"
+                            android:textSize="14dp"
+                            android:gravity="center_vertical"
+                            android:drawableLeft="@drawable/ic_winner_small"
+                            android:padding="7dp"/>
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="0.1dp"
+                            android:background="#dcdbdb"/>
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="You'll get Rs.175 per member(for Fourth 10 members)"
+                            android:textAllCaps="false"
+                            android:textStyle="normal"
+                            android:layout_weight="1"
+                            android:layout_gravity="start"
+
+                            android:fontFamily="sans-serif"
+                            android:drawablePadding="5dp"
+                            android:textColor="#fff"
+                            android:textSize="14dp"
+                            android:gravity="center_vertical"
+                            android:drawableLeft="@drawable/ic_winner_small"
+                            android:padding="7dp"/>
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="0.1dp"
+                            android:background="#dcdbdb"/>
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="You'll get Rs.200 per member(for Fifth 10 members)"
+                            android:textAllCaps="false"
+                            android:textStyle="normal"
+                            android:layout_weight="1"
+                            android:layout_gravity="start"
+
+                            android:fontFamily="sans-serif"
+                            android:drawablePadding="5dp"
+                            android:textColor="#fff"
+                            android:textSize="14dp"
+                            android:gravity="center_vertical"
+                            android:drawableLeft="@drawable/ic_winner_small"
+                            android:padding="7dp"/>
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="0.1dp"
+                            android:background="#dcdbdb"/>
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="You'll get each Rs.200 from 51 member joining."
+                            android:textAllCaps="false"
+                            android:textStyle="normal"
+                            android:layout_weight="1"
+                            android:layout_gravity="start"
+
+                            android:fontFamily="sans-serif"
+                            android:drawablePadding="5dp"
+                            android:textColor="#fff"
+                            android:textSize="14dp"
+                            android:gravity="center_vertical"
+                            android:drawableLeft="@drawable/ic_winner_small"
+                            android:padding="7dp"/>
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="0.1dp"
+                            android:background="#dcdbdb"/>
+                        <!-- <TextView
+                             android:layout_width="wrap_content"
+                             android:layout_height="wrap_content"
+                             android:text="For complete level need 3 member to join within 5 days hurry up."
+                             android:textAllCaps="false"
+                             android:textStyle="bold"
+
+                             android:layout_gravity="left"
+
+                             android:fontFamily="sans-serif"
+                             android:drawablePadding="5dp"
+                             android:textColor="#f2d21c"
+                             android:textSize="14dp"
+                             android:gravity="center"
+                             android:padding="7dp"/>-->
+                    </LinearLayout>
+                </LinearLayout>
+            </android.support.v7.widget.CardView>
+        </LinearLayout>
+    </ScrollView>
+</android.support.constraint.ConstraintLayout>

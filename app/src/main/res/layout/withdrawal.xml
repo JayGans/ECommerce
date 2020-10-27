@@ -1,0 +1,200 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="0dp"
+   >
+
+    <!-- TODO: Update blank fragment layout -->
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:orientation="vertical">
+        <android.support.v7.widget.CardView
+            xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                 card_view:cardBackgroundColor="@color/colorPrimary"
+            android:layout_gravity="center"
+            android:layout_width="match_parent"
+
+            android:layout_height="wrap_content"
+            card_view:cardCornerRadius="2dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:paddingTop="0dp"
+                android:paddingBottom="0dp"
+                android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="30dp"
+                    android:id="@+id/txtsrno1"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:padding="5dp"
+                    android:textColor="#fff"
+android:fontFamily="sans-serif"
+                    android:visibility="visible"
+                    android:textAllCaps="true"
+                    android:textSize="14dp"
+                  android:text="#1"
+                    android:layout_marginRight="0dp"
+                    android:layout_height="30dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="DATE : 01-01-2020"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:padding="2dp"
+
+                   android:textStyle="bold"
+                    android:textSize="14dp"
+android:textAllCaps="true"
+
+                    android:id="@+id/txtdt1"
+
+                    android:textColor="#fff"/>
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Pending"
+                    android:padding="2dp"
+android:textAllCaps="true"
+                    android:layout_weight="1"
+                    android:textStyle="bold"
+                    android:gravity="end"
+                    android:textSize="14dp"
+
+                    android:id="@+id/txtstatus1"
+
+                    android:textColor="#fff"/>
+
+            </LinearLayout>
+
+
+
+
+            </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="#dadada"/>
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+        <android.support.v7.widget.CardView
+            xmlns:card_view="http://schemas.android.com/apk/res-auto"
+
+            android:layout_gravity="center"
+            android:layout_width="match_parent"
+
+            android:layout_height="wrap_content"
+            card_view:cardCornerRadius="2dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+android:padding="3dp"
+                android:paddingTop="0dp"
+                android:paddingBottom="0dp"
+                android:orientation="vertical">
+
+
+
+
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="AMOUNT : RS.1111111"
+                            android:gravity="start"
+                            android:layout_weight="1"
+                            android:padding="3dp"
+
+                            android:textStyle="bold"
+                            android:textSize="14dp"
+                            android:textAllCaps="true"
+
+                            android:id="@+id/txtwamt"
+
+                            android:textColor="#171e2b"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Interest % : 11 %"
+                        android:gravity="start"
+                        android:layout_weight="1"
+                        android:padding="3dp"
+
+                        android:textStyle="normal"
+                        android:textSize="14dp"
+                        android:textAllCaps="true"
+
+                        android:id="@+id/txtintper"
+
+                        android:textColor="#e79830"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Interest AMOUNT % : 11 %"
+                    android:gravity="start"
+                    android:layout_weight="1"
+                    android:padding="3dp"
+
+                    android:textStyle="normal"
+                    android:textSize="14dp"
+                    android:textAllCaps="true"
+
+                    android:id="@+id/txttint"
+
+                    android:textColor="#d1710a"/>
+
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Total Withdrawal Rs % : 11 %"
+                    android:gravity="start"
+                    android:layout_weight="1"
+                    android:padding="3dp"
+
+                    android:textStyle="bold"
+                    android:textSize="14dp"
+                    android:textAllCaps="true"
+
+                    android:id="@+id/txttamt"
+
+                    android:textColor="#1b9636"/>
+
+
+
+
+
+
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+
+    </LinearLayout>
+</FrameLayout>
