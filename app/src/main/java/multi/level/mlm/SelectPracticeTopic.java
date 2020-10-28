@@ -28,19 +28,15 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class SelectSubject extends AppCompatActivity {
-    String str1="",str="";
-    String cid="";
+public class SelectPracticeTopic extends AppCompatActivity {
     private RecyclerView recyclerView;
-    String url="https://myapparelhub.com/Mcq/MobileApi/getSubjectList.php";
+    String url="https://myapparelhub.com/Mcq/MobileApi/getTopicList.php";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select_subject);
-        str1=getIntent().getExtras().getString("for");
-        cid=getIntent().getExtras().getString("cid");
-
-        setTitle("Select Subject");
+        String sid=getIntent().getExtras().getString("id");
+        setTitle("Select Topic");
         try
         {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -51,16 +47,16 @@ public class SelectSubject extends AppCompatActivity {
         }
         TextView txtnm=(TextView)findViewById(R.id.csnm);
         recyclerView = (RecyclerView)findViewById(R.id.subject_list);
-        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(SelectSubject.this);
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(SelectPracticeTopic.this);
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setHasFixedSize(true);
         recyclerView.setNestedScrollingEnabled(false);
-         str=getIntent().getExtras().getString("nm");
-        txtnm.setText(str);
-        //TextView txt=(TextView)findViewById(R.id.txttestnm);
-        // txt.setText(str);
+       String str=getIntent().getExtras().getString("nm");
 
-        getListt(cid);
+
+         txtnm.setText(str);
+
+        getListt(sid);
         /*findViewById(R.id.btgochap).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -143,7 +139,7 @@ public class SelectSubject extends AppCompatActivity {
         };
 
         //creating a request queue
-        RequestQueue requestQueue = Volley.newRequestQueue(SelectSubject.this);
+        RequestQueue requestQueue = Volley.newRequestQueue(SelectPracticeTopic.this);
 
         //adding the string request to request queue
         requestQueue.add(stringRequest);
@@ -213,15 +209,12 @@ public class SelectSubject extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     try{
-                        Intent intent=null;
-                        if(str1.equalsIgnoreCase("Practice Test"))
-                             intent= new Intent(SelectSubject.this,SelectPracticeTopic.class);
-                        else
-                         intent= new Intent(SelectSubject.this,SelectChapter.class);
+
+                            Intent intent= new Intent(SelectPracticeTopic.this,PracticeTest.class);
 
                         intent.putExtra("nm",movie.getName());
                         intent.putExtra("id",movie.getId());
-                        intent.putExtra("for",str1);
+                        intent.putExtra("for","Practice Test");
                         startActivity(intent);
                     }catch (Exception e){}
                 }

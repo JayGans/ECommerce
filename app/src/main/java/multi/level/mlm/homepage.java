@@ -100,7 +100,7 @@ try{
             try{
                 Intent intent= new Intent(getActivity(),SelectCourse.class);
                 intent.putExtra("nm","Practice Test");
-                intent.putExtra("for","Test");
+                intent.putExtra("for","Practice Test");
                 startActivity(intent);
                 b.dismiss();
             }catch (Exception e){}
@@ -112,7 +112,7 @@ try{
             try{
                 Intent intent= new Intent(getActivity(),SelectCourse.class);
                 intent.putExtra("nm","All India Rank Level");
-                intent.putExtra("for","Test");
+                intent.putExtra("for","All India Rank Level");
                 startActivity(intent);
                 b.dismiss();
             }catch (Exception e){}

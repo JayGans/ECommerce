@@ -15,7 +15,7 @@ public class QuationList extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_quation_list);
+        setContentView(R.layout.activity_practice_test);
         setTitle("MCQ Test");
         try
         {
@@ -27,7 +27,7 @@ public class QuationList extends AppCompatActivity {
         }
 
 
-         _tv = (TextView) findViewById( R.id.txttimer );
+         _tv = (TextView) findViewById( R.id.txtProgress );
         new CountDownTimer(120000, 1000) { // adjust the milli seconds here
 
             public void onTick(long millisUntilFinished) {
