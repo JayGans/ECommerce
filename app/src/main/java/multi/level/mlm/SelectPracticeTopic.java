@@ -2,6 +2,7 @@ package multi.level.mlm;
 
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
+import android.speech.tts.TextToSpeech;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -26,10 +27,12 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 public class SelectPracticeTopic extends AppCompatActivity {
     private RecyclerView recyclerView;
+
     String url="https://myapparelhub.com/Mcq/MobileApi/getTopicList.php";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +48,7 @@ public class SelectPracticeTopic extends AppCompatActivity {
         {
 
         }
+
         TextView txtnm=(TextView)findViewById(R.id.csnm);
         recyclerView = (RecyclerView)findViewById(R.id.subject_list);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(SelectPracticeTopic.this);
