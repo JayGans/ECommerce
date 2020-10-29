@@ -27,9 +27,12 @@ public class PracticeTest extends Activity {
     ProgressBar progressBar;
     CardView card_a,card_b,card_c,card_d;
     RelativeLayout rel_a,rel_b,rel_c,rel_d;
-    int total_q=2;
+    int total_q=2,correct=0,wrong=0,earn=0,loss=0;
+
     CountDownTimer TimerCount=null;
-    TextView opt1,opt2,opt3,opt4,q_count;
+    TextView opt1,opt2,opt3,opt4,q_count,txtright,txtwrong,txtearn,txtloss;
+    ProgressBar progress_right,progress_wrong;
+
     int q=0;
     String [] qlist={"Is it possible to have an activity without UI to perform action/actions?","How many sizes are supported by Android?"};
     String [] options={"Not possible~Wrong question~Yes, it is possible~None of the above","Android supported all sizes~Android does not support all sizes~ Android supports small,normal, large and extra-large sizes~Size is undefined in android"};
@@ -46,6 +49,14 @@ public class PracticeTest extends Activity {
         rel_b=(RelativeLayout)findViewById(R.id.rel_b);
         rel_c=(RelativeLayout)findViewById(R.id.rel_c);
         rel_d=(RelativeLayout)findViewById(R.id.rel_d);
+        txtright=(TextView)findViewById(R.id.txtright);
+
+        txtearn=(TextView)findViewById(R.id.txtearn);
+        txtloss=(TextView)findViewById(R.id.txtloss);
+
+        txtwrong=(TextView)findViewById(R.id.txtwrong);
+        progress_right=(ProgressBar) findViewById(R.id.progress_right);
+        progress_wrong=(ProgressBar) findViewById(R.id.progress_wrong);
         t1=new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
             @Override
             public void onInit(int status) {
@@ -93,8 +104,14 @@ public class PracticeTest extends Activity {
                 if(opt1.getText().toString().equalsIgnoreCase(ans[q]))
                 {
                     card_a.setCardBackgroundColor(Color.parseColor("#FF4CAF50"));
+                    correct++;
+                    txtright.setText(""+correct);
+                    progress_right.setProgress(correct*10);
                 }else
                 {
+                    wrong++;
+                    txtwrong.setText(""+wrong);
+                    progress_wrong.setProgress(wrong*10);
                     card_a.setCardBackgroundColor(Color.parseColor("#F44336"));
                     if(opt2.getText().toString().equalsIgnoreCase(ans[q]))
                         card_b.setCardBackgroundColor(Color.parseColor("#FF4CAF50"));
@@ -136,8 +153,14 @@ public class PracticeTest extends Activity {
                 if(opt2.getText().toString().equalsIgnoreCase(ans[q]))
                 {
                     card_b.setCardBackgroundColor(Color.parseColor("#FF4CAF50"));
+                    correct++;
+                    txtright.setText(""+correct);
+                    progress_right.setProgress(correct*10);
                 }else
                 {
+                    wrong++;
+                    txtwrong.setText(""+wrong);
+                    progress_wrong.setProgress(wrong*10);
                     card_b.setCardBackgroundColor(Color.parseColor("#F44336"));
                     if(opt1.getText().toString().equalsIgnoreCase(ans[q]))
                         card_a.setCardBackgroundColor(Color.parseColor("#FF4CAF50"));
@@ -178,8 +201,14 @@ public class PracticeTest extends Activity {
                 if(opt3.getText().toString().equalsIgnoreCase(ans[q]))
                 {
                     card_c.setCardBackgroundColor(Color.parseColor("#FF4CAF50"));
+                    correct++;
+                    txtright.setText(""+correct);
+                    progress_right.setProgress(correct*10);
                 }else
                 {
+                    wrong++;
+                    txtwrong.setText(""+wrong);
+                    progress_wrong.setProgress(wrong*10);
                     card_c.setCardBackgroundColor(Color.parseColor("#F44336"));
                     if(opt1.getText().toString().equalsIgnoreCase(ans[q]))
                         card_a.setCardBackgroundColor(Color.parseColor("#FF4CAF50"));
@@ -219,8 +248,14 @@ public class PracticeTest extends Activity {
                 if(opt4.getText().toString().equalsIgnoreCase(ans[q]))
                 {
                     card_d.setCardBackgroundColor(Color.parseColor("#FF4CAF50"));
+                    correct++;
+                    txtright.setText(""+correct);
+                    progress_right.setProgress(correct*10);
                 }else
                 {
+                    wrong++;
+                    txtwrong.setText(""+wrong);
+                    progress_wrong.setProgress(wrong*10);
                     card_d.setCardBackgroundColor(Color.parseColor("#F44336"));
                     if(opt1.getText().toString().equalsIgnoreCase(ans[q]))
                         card_a.setCardBackgroundColor(Color.parseColor("#FF4CAF50"));
