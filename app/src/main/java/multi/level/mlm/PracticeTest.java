@@ -3,6 +3,7 @@ package multi.level.mlm;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.CountDownTimer;
 import android.speech.tts.TextToSpeech;
@@ -28,15 +29,19 @@ public class PracticeTest extends Activity {
     CardView card_a,card_b,card_c,card_d;
     RelativeLayout rel_a,rel_b,rel_c,rel_d;
     int total_q=2,correct=0,wrong=0,earn=0,loss=0;
-
+    String url="https://myapparelhub.com/Mcq/MobileApi/get_practice_questions_chapterwise.php";
     CountDownTimer TimerCount=null;
     TextView opt1,opt2,opt3,opt4,q_count,txtright,txtwrong,txtearn,txtloss;
     ProgressBar progress_right,progress_wrong;
+    ProgressBar p_a,p_b,p_c,p_d;
+    TextView txt_a,txt_b,txt_c,txt_d;
 
     int q=0;
     String [] qlist={"Is it possible to have an activity without UI to perform action/actions?","How many sizes are supported by Android?"};
     String [] options={"Not possible~Wrong question~Yes, it is possible~None of the above","Android supported all sizes~Android does not support all sizes~ Android supports small,normal, large and extra-large sizes~Size is undefined in android"};
    String [] ans={"Not possible","Android supported all sizes"};
+    String [] per={"30~40~60~10","75~20~10~8"};
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,6 +58,18 @@ public class PracticeTest extends Activity {
 
         txtearn=(TextView)findViewById(R.id.txtearn);
         txtloss=(TextView)findViewById(R.id.txtloss);
+
+        txt_a=(TextView)findViewById(R.id.txt_a);
+        txt_b=(TextView)findViewById(R.id.txt_b);
+        txt_c=(TextView)findViewById(R.id.txt_c);
+        txt_d=(TextView)findViewById(R.id.txt_d);
+
+
+        p_a=(ProgressBar) findViewById(R.id.pro_a);
+        p_b=(ProgressBar)findViewById(R.id.pro_b);
+        p_c=(ProgressBar)findViewById(R.id.pro_c);
+        p_d=(ProgressBar)findViewById(R.id.pro_d);
+
 
         txtwrong=(TextView)findViewById(R.id.txtwrong);
         progress_right=(ProgressBar) findViewById(R.id.progress_right);
@@ -107,8 +124,12 @@ public class PracticeTest extends Activity {
                     correct++;
                     txtright.setText(""+correct);
                     progress_right.setProgress(correct*10);
+                    earn++;
+                    txtearn.setText(""+earn);
                 }else
                 {
+                    loss--;
+                    txtloss.setText(""+loss);
                     wrong++;
                     txtwrong.setText(""+wrong);
                     progress_wrong.setProgress(wrong*10);
@@ -124,7 +145,10 @@ public class PracticeTest extends Activity {
                 }
 
                 if(q+1==total_q) {
-                    Toast.makeText(PracticeTest.this, "Exam Finish !", Toast.LENGTH_SHORT).show();
+                    try{
+                        Intent intent= new Intent(PracticeTest.this,FinishExam.class);
+                        startActivity(intent);
+                    }catch (Exception e){}
                     try{ TimerCount.cancel();}catch (Exception e){}
                 }else
                 {
@@ -141,7 +165,32 @@ public class PracticeTest extends Activity {
                 }
             }
         });
+findViewById(R.id.btback).setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View view) {
+        try{
+            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(PracticeTest.this);
+            alertDialogBuilder.setMessage("Do you want to exit?");
 
+
+            alertDialogBuilder.setPositiveButton("No",new DialogInterface.OnClickListener() {
+                //Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.dismiss();
+                }
+            });
+            alertDialogBuilder.setNegativeButton("Yes",new DialogInterface.OnClickListener() {
+                //Override
+                public void onClick(DialogInterface dialog, int which) {
+                    finish();
+                }
+            });
+
+            AlertDialog alertDialog = alertDialogBuilder.create();
+            alertDialog.show();
+        }catch (Exception e){}
+    }
+});
         card_b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -156,8 +205,12 @@ public class PracticeTest extends Activity {
                     correct++;
                     txtright.setText(""+correct);
                     progress_right.setProgress(correct*10);
+                    earn++;
+                    txtearn.setText(""+earn);
                 }else
                 {
+                    loss--;
+                    txtloss.setText(""+loss);
                     wrong++;
                     txtwrong.setText(""+wrong);
                     progress_wrong.setProgress(wrong*10);
@@ -173,7 +226,10 @@ public class PracticeTest extends Activity {
 
                 }
                 if(q+1==total_q) {
-                    Toast.makeText(PracticeTest.this, "Exam Finish !", Toast.LENGTH_SHORT).show();
+                    try{
+                        Intent intent= new Intent(PracticeTest.this,FinishExam.class);
+                        startActivity(intent);
+                    }catch (Exception e){}
                     try{ TimerCount.cancel();}catch (Exception e){}
                 }else
                 {
@@ -204,8 +260,12 @@ public class PracticeTest extends Activity {
                     correct++;
                     txtright.setText(""+correct);
                     progress_right.setProgress(correct*10);
+                    earn++;
+                    txtearn.setText(""+earn);
                 }else
                 {
+                    loss--;
+                    txtloss.setText(""+loss);
                     wrong++;
                     txtwrong.setText(""+wrong);
                     progress_wrong.setProgress(wrong*10);
@@ -220,7 +280,10 @@ public class PracticeTest extends Activity {
 
                 }
                 if(q+1==total_q) {
-                    Toast.makeText(PracticeTest.this, "Exam Finish !", Toast.LENGTH_SHORT).show();
+                    try{
+                        Intent intent= new Intent(PracticeTest.this,FinishExam.class);
+                        startActivity(intent);
+                    }catch (Exception e){}
                     try{ TimerCount.cancel();}catch (Exception e){}
                 }else
                 {
@@ -251,8 +314,12 @@ public class PracticeTest extends Activity {
                     correct++;
                     txtright.setText(""+correct);
                     progress_right.setProgress(correct*10);
+                    earn++;
+                    txtearn.setText(""+earn);
                 }else
                 {
+                    loss--;
+                    txtloss.setText(""+loss);
                     wrong++;
                     txtwrong.setText(""+wrong);
                     progress_wrong.setProgress(wrong*10);
@@ -267,7 +334,10 @@ public class PracticeTest extends Activity {
 
                 }
                 if(q+1==total_q) {
-                    Toast.makeText(PracticeTest.this, "Exam Finish !", Toast.LENGTH_SHORT).show();
+                    try{
+                        Intent intent= new Intent(PracticeTest.this,FinishExam.class);
+                        startActivity(intent);
+                    }catch (Exception e){}
                     try{ TimerCount.cancel();}catch (Exception e){}
                 }else
                 {
@@ -306,6 +376,18 @@ findViewById(R.id.btshowpeople).setOnClickListener(new View.OnClickListener() {
         opt3.setText(str[2]);
         opt4.setText(str[3]);
 
+        String ps=per[q];
+        String [] str_p=ps.split("~");
+        txt_a.setText(str_p[0]+"%");
+        txt_b.setText(str_p[1]+"%");
+        txt_c.setText(str_p[2]+"%");
+        txt_d.setText(str_p[3]+"%");
+
+        p_a.setProgress(Integer.parseInt(str_p[0]));
+        p_b.setProgress(Integer.parseInt(str_p[1]));
+        p_c.setProgress(Integer.parseInt(str_p[2]));
+        p_d.setProgress(Integer.parseInt(str_p[3]));
+
          TimerCount= new CountDownTimer(100000, 1000) { // adjust the milli seconds here
 
             public void onTick(long millisUntilFinished) {
@@ -317,7 +399,10 @@ findViewById(R.id.btshowpeople).setOnClickListener(new View.OnClickListener() {
             public void onFinish() {
 
                 if(q+1==total_q) {
-                    Toast.makeText(PracticeTest.this, "Exam Finish !", Toast.LENGTH_SHORT).show();
+                   try{
+                       Intent intent= new Intent(PracticeTest.this,FinishExam.class);
+                       startActivity(intent);
+                    }catch (Exception e){}
                 }else
                 {
                     q++;

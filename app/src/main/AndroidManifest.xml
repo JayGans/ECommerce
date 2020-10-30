@@ -17,7 +17,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".SelectPracticeTopic"></activity>
+        <activity android:name=".FinishExam"></activity>
+        <activity android:name=".SelectPracticeTopic" />
         <activity android:name=".SelectSubject" />
         <activity android:name=".VideoList" />
         <activity android:name=".QuationList" />
