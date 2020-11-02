@@ -2,8 +2,8 @@ package multi.level.mlm;
 
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -28,19 +28,16 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class SelectSubject extends AppCompatActivity {
-    String str1="",str="";
-    String cid="";
+public class PracticeTestList extends AppCompatActivity {
     private RecyclerView recyclerView;
-    String url="http://hsoftech.in/Mcq/MobileApi/getSubjectList.php";
+
+    String url="http://hsoftech.in/Mcq/MobileApi/getPractice_tests_List.php";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select_subject);
-        str1=getIntent().getExtras().getString("for");
-        cid=getIntent().getExtras().getString("cid");
-
-        setTitle("Select Subject");
+        String sid=getIntent().getExtras().getString("id");
+        setTitle("Select Paper");
         try
         {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -49,35 +46,20 @@ public class SelectSubject extends AppCompatActivity {
         {
 
         }
+
         TextView txtnm=(TextView)findViewById(R.id.csnm);
         recyclerView = (RecyclerView)findViewById(R.id.subject_list);
-        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(SelectSubject.this);
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(PracticeTestList.this);
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setHasFixedSize(true);
         recyclerView.setNestedScrollingEnabled(false);
-         str=getIntent().getExtras().getString("nm");
-        txtnm.setText(str);
-        //TextView txt=(TextView)findViewById(R.id.txttestnm);
-        // txt.setText(str);
+       String str=getIntent().getExtras().getString("nm");
 
-        getListt(cid);
-        /*findViewById(R.id.btgochap).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent= new Intent(SelectCourse.this,SelectChapter.class);
-                intent.putExtra("nm","Chapter Name");
-                intent.putExtra("for",str1);
-                startActivity(intent);
-            }
-        });
 
-        findViewById(R.id.btbackchap).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-               finish();
-            }
-        });
-*/
+         txtnm.setText(str);
+
+        getListt(sid);
+
     }
 
     private void getListt(final String cid) {
@@ -106,6 +88,8 @@ public class SelectSubject extends AppCompatActivity {
                                 SetGetMethode s= new SetGetMethode();
                                 s.setId(c.getString("id"));
                                 s.setName(c.getString("nm"));
+                                s.setFees(c.getString("fee"));
+                                s.setNoQ(c.getString("no"));
 
 
                                 list1.add(s);
@@ -143,7 +127,7 @@ public class SelectSubject extends AppCompatActivity {
         };
 
         //creating a request queue
-        RequestQueue requestQueue = Volley.newRequestQueue(SelectSubject.this);
+        RequestQueue requestQueue = Volley.newRequestQueue(PracticeTestList.this);
 
         //adding the string request to request queue
         requestQueue.add(stringRequest);
@@ -213,15 +197,12 @@ public class SelectSubject extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     try{
-                        Intent intent=null;
-                        if(str1.equalsIgnoreCase("Practice Test"))
-                             intent= new Intent(SelectSubject.this,SelectPracticeTopic.class);
-                        else
-                         intent= new Intent(SelectSubject.this,SelectChapter.class);
+
+                            Intent intent= new Intent(PracticeTestList.this,PracticeTest.class);
 
                         intent.putExtra("nm",movie.getName());
-                        intent.putExtra("id",movie.getId());
-                        intent.putExtra("for",str1);
+                        intent.putExtra("cid",movie.getId());
+                        intent.putExtra("for","Practice Test");
                         startActivity(intent);
                     }catch (Exception e){}
                 }

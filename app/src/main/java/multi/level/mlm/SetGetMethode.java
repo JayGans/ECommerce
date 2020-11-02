@@ -99,4 +99,24 @@ String Id;
     String Per;
     String Inter_amt;
 
+    public String getNoQ() {
+        return NoQ;
+    }
+
+    public void setNoQ(String noQ) {
+        NoQ = noQ;
+    }
+
+    public String getFees() {
+        return Fees;
+    }
+
+    public void setFees(String fees) {
+        Fees = fees;
+    }
+
+    String NoQ;
+    String Fees;
+
+
 }

@@ -33,7 +33,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class MainActivity extends Activity {
-    String url="https://myapparelhub.com/Mcq/MobileApi/Login.php";
+    String url="http://hsoftech.in/Mcq/MobileApi/Login.php";
     EditText ednm;
     ShowHidePasswordEditText edpass;
     @Override

@@ -31,8 +31,8 @@ public class EditProfile extends AppCompatActivity {
 
     EditText ednm,edmno,edusnm,edemail,edcity;
     String uid="";
-    String url_up="https://myapparelhub.com/Mcq/MobileApi/updateprofile.php";
-    String url="https://myapparelhub.com/Mcq/MobileApi/getprofile.php";
+    String url_up="http://hsoftech.in/Mcq/MobileApi/updateprofile.php";
+    String url="http://hsoftech.in/Mcq/MobileApi/getprofile.php";
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {

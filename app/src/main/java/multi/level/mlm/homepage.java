@@ -43,7 +43,7 @@ String bal="",twoper="0",oneper="0",halfper="0",earnbal="0";
       TextView txtbal,txtearn,txtdepo,txtwith,txtearnbal,txtearnwith;
 
     TextView txtref;
-    String url="https://myapparelhub.com/Mcq/MobileApi/getbal.php";
+    String url="http://hsoftech.in/Mcq/MobileApi/getbal.php";
 
     private SwipeRefreshLayout swipeRefreshLayout;
     public homepage()

@@ -72,7 +72,7 @@ import static com.karumi.dexter.Dexter.*;
  * A simple {@link Fragment} subclass.
  */
 public class MyProfile extends Fragment {
-    String url="https://myapparelhub.com/Mcq/MobileApi/getprofile.php";
+    String url="http://hsoftech.in/Mcq/MobileApi/getprofile.php";
 
     View rootView;
     String uid="";

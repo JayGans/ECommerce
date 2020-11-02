@@ -33,7 +33,7 @@ import java.util.Map;
 public class SelectPracticeTopic extends AppCompatActivity {
     private RecyclerView recyclerView;
 
-    String url="https://myapparelhub.com/Mcq/MobileApi/getTopicList.php";
+    String url="http://hsoftech.in/Mcq/MobileApi/getTopicList.php";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -217,7 +217,7 @@ public class SelectPracticeTopic extends AppCompatActivity {
                             Intent intent= new Intent(SelectPracticeTopic.this,PracticeTest.class);
 
                         intent.putExtra("nm",movie.getName());
-                        intent.putExtra("id",movie.getId());
+                        intent.putExtra("cid",movie.getId());
                         intent.putExtra("for","Practice Test");
                         startActivity(intent);
                     }catch (Exception e){}

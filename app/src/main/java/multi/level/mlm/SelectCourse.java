@@ -32,7 +32,7 @@ import java.util.Map;
 public class SelectCourse extends AppCompatActivity {
     String str1="";
     private RecyclerView recyclerView;
-    String url="https://myapparelhub.com/Mcq/MobileApi/getCourseList.php";
+    String url="http://hsoftech.in/Mcq/MobileApi/getCourseList.php";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

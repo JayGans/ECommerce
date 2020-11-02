@@ -35,8 +35,8 @@ public class Registration extends AppCompatActivity {
 
     Button btsave;
     CheckBox ck;
-    String url="https://myapparelhub.com/Mcq/MobileApi/Registration.php";
-   // String url_refisval="https://myapparelhub.com/Mcq/MobileApi/isrefvalid.php";
+    String url="http://hsoftech.in/Mcq/MobileApi/Registration.php";
+   // String url_refisval="http://hsoftech.in/Mcq/MobileApi/isrefvalid.php";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

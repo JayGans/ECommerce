@@ -16,20 +16,36 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.w3c.dom.Text;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 public class PracticeTest extends Activity {
     TextView _tv;
     TextView txtque;
     TextToSpeech t1;
+    String Chapter_Id="",Test_id="";
     ProgressBar progressBar;
     CardView card_a,card_b,card_c,card_d;
     RelativeLayout rel_a,rel_b,rel_c,rel_d;
     int total_q=2,correct=0,wrong=0,earn=0,loss=0;
-    String url="https://myapparelhub.com/Mcq/MobileApi/get_practice_questions_chapterwise.php";
+    String url="http://hsoftech.in/Mcq/MobileApi/get_practice_questions_chapterwise.php";
+    String url_add="http://hsoftech.in/Mcq/MobileApi/add_practice_questions_ans.php";
     CountDownTimer TimerCount=null;
     TextView opt1,opt2,opt3,opt4,q_count,txtright,txtwrong,txtearn,txtloss;
     ProgressBar progress_right,progress_wrong;
@@ -37,17 +53,19 @@ public class PracticeTest extends Activity {
     TextView txt_a,txt_b,txt_c,txt_d;
 
     int q=0;
-    String [] qlist={"Is it possible to have an activity without UI to perform action/actions?","How many sizes are supported by Android?"};
-    String [] options={"Not possible~Wrong question~Yes, it is possible~None of the above","Android supported all sizes~Android does not support all sizes~ Android supports small,normal, large and extra-large sizes~Size is undefined in android"};
-   String [] ans={"Not possible","Android supported all sizes"};
-    String [] per={"30~40~60~10","75~20~10~8"};
+    String [] qlist;
+    String [] options;
+   String [] ans;
+    String [] per;
+    String  [] qid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_practice_test);
 
-
+        Chapter_Id=getIntent().getExtras().getString("cid");
+        Test_id=getIntent().getExtras().getString("tid");
         progressBar=(ProgressBar)findViewById(R.id.progressBar);
         _tv = (TextView) findViewById( R.id.txtProgress );
         rel_a=(RelativeLayout)findViewById(R.id.rel_a);
@@ -143,7 +161,7 @@ public class PracticeTest extends Activity {
 
 
                 }
-
+                addans(Chapter_Id,qid[q],opt1.getText().toString());
                 if(q+1==total_q) {
                     try{
                         Intent intent= new Intent(PracticeTest.this,FinishExam.class);
@@ -225,6 +243,7 @@ findViewById(R.id.btback).setOnClickListener(new View.OnClickListener() {
 
 
                 }
+                addans(Chapter_Id,qid[q],opt2.getText().toString());
                 if(q+1==total_q) {
                     try{
                         Intent intent= new Intent(PracticeTest.this,FinishExam.class);
@@ -279,6 +298,7 @@ findViewById(R.id.btback).setOnClickListener(new View.OnClickListener() {
 
 
                 }
+                addans(Chapter_Id,qid[q],opt3.getText().toString());
                 if(q+1==total_q) {
                     try{
                         Intent intent= new Intent(PracticeTest.this,FinishExam.class);
@@ -333,6 +353,7 @@ findViewById(R.id.btback).setOnClickListener(new View.OnClickListener() {
 
 
                 }
+                addans(Chapter_Id,qid[q],opt4.getText().toString());
                 if(q+1==total_q) {
                     try{
                         Intent intent= new Intent(PracticeTest.this,FinishExam.class);
@@ -363,8 +384,8 @@ findViewById(R.id.btshowpeople).setOnClickListener(new View.OnClickListener() {
     }
 });
 
+getList(Chapter_Id,Test_id);
 
-        starttimer();
     }
     public void starttimer()
     {
@@ -418,4 +439,124 @@ findViewById(R.id.btshowpeople).setOnClickListener(new View.OnClickListener() {
             }
         }.start();
     }
+
+
+
+
+
+    private void getList(final String cid,final String testid) {
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        //hiding the progressbar after completion
+                        //  progressBar.setVisibility(View.INVISIBLE);
+
+
+                        try {
+                            //getting the whole json object from the response
+                            JSONObject obj = new JSONObject(response);
+
+
+                            JSONArray heroArray = obj.getJSONArray("data");
+                            //  Toast.makeText(Withdrawal.this, ""+heroArray, Toast.LENGTH_SHORT).show();
+                            qid=new String[heroArray.length()];
+                            qlist=new String[heroArray.length()];
+                            options=new String[heroArray.length()];
+                            ans=new String[heroArray.length()];
+                            per=new String[heroArray.length()];
+                             for (int i = 0; i < heroArray.length(); i++)
+                             {
+                                //getting the json object of the particular index inside the array
+                                JSONObject c = heroArray.getJSONObject(i);
+
+                                 qid[i]= c.getString("id");
+                                 qlist[i]= c.getString("nm");
+                                 options[i]= c.getString("a")+"~"+c.getString("b")+"~"+c.getString("c")+"~"+c.getString("d");
+                                 ans[i]= c.getString("ans");
+                                 per[i]=  c.getString("pa")+"~"+c.getString("pb")+"~"+c.getString("pc")+"~"+c.getString("pd");
+
+
+                            }
+if(heroArray.length()>0)
+    starttimer();
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        //displaying the error in toast if occurrs
+                        //  Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                }
+        ){
+            @Override
+            protected Map<String, String> getParams()
+            {
+                Map<String, String>  params = new HashMap<String, String>();
+                params.put("cid",cid);
+                params.put("tid",testid);
+
+
+                return params;
+            }
+        };
+
+        //creating a request queue
+        RequestQueue requestQueue = Volley.newRequestQueue(PracticeTest.this);
+
+        //adding the string request to request queue
+        requestQueue.add(stringRequest);
+    }
+     void addans(final String cid,final String qid,final  String ans) {
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, url_add,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        //hiding the progressbar after completion
+                        //  progressBar.setVisibility(View.INVISIBLE);
+
+
+                        try {
+                            //getting the whole json object from the response
+
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        //displaying the error in toast if occurrs
+                        //  Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                }
+        ){
+            @Override
+            protected Map<String, String> getParams()
+            {
+                Map<String, String>  params = new HashMap<String, String>();
+                params.put("uid",SaveSharedPreference.getUserId(PracticeTest.this));
+                params.put("cid",cid);
+                params.put("qid",qid);
+                params.put("ans",ans);
+
+
+                return params;
+            }
+        };
+
+        //creating a request queue
+        RequestQueue requestQueue = Volley.newRequestQueue(PracticeTest.this);
+
+        //adding the string request to request queue
+        requestQueue.add(stringRequest);
+    }
+
+
 }

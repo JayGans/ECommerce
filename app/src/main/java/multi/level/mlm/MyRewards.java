@@ -28,7 +28,7 @@ import java.util.Map;
  */
 public class MyRewards extends Fragment {
 
-    String url="https://myapparelhub.com/Mcq/MobileApi/getleveldetails.php";
+    String url="http://hsoftech.in/Mcq/MobileApi/getleveldetails.php";
     View rootView;
     public MyRewards()
     {

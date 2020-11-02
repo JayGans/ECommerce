@@ -29,9 +29,9 @@ import java.util.Map;
 
 public class Withdrawal extends AppCompatActivity {
     private RecyclerView recyclerView;
-    String url="https://myapparelhub.com/Mcq/MobileApi/getwithdra.php";
+    String url="http://hsoftech.in/Mcq/MobileApi/getwithdra.php";
 
-    String url_add="https://myapparelhub.com/Mcq/MobileApi/addwithdra.php";
+    String url_add="http://hsoftech.in/Mcq/MobileApi/addwithdra.php";
     TextView adddepo;
     String ckpath="";
     ImageView ckimg;

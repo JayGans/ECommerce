@@ -27,7 +27,7 @@ import java.util.Map;
 
 public class Login extends AppCompatActivity {
 
-    String url="https://myapparelhub.com/Mcq/MobileApi/Login.php";
+    String url="http://hsoftech.in/Mcq/MobileApi/Login.php";
     EditText ednm;
     ShowHidePasswordEditText edpass;
 

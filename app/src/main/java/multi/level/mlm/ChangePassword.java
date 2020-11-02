@@ -26,7 +26,7 @@ public class ChangePassword extends AppCompatActivity {
     ConnectionDetector cd;
     String UID;
    // String usid;
-   String url="https://myapparelhub.com/Mcq/MobileApi/changepass.php";
+   String url="http://hsoftech.in/Mcq/MobileApi/changepass.php";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
