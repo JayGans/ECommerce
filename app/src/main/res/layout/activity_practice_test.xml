@@ -78,6 +78,23 @@ android:layout_marginTop="4dp"
                             android:textSize="17dp"
                             android:padding="10dp"
                             />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="₹0"
+                            android:drawableLeft="@drawable/ic_wallet"
+                            android:textColor="#0C0E0C"
+                            android:textStyle="bold"
+                            android:id="@+id/bal_av"
+                            android:drawablePadding="5dp"
+                            android:layout_marginRight="15dp"
+                            android:layout_marginTop="4dp"
+                            android:layout_marginBottom="4dp"
+                            android:gravity="start"
+                            android:fontFamily="@font/sf_ui_display_medium"
+                            android:textSize="17dp"
+                            android:padding="10dp"
+                            />
 
                     </LinearLayout>
                 </android.support.v7.widget.CardView>
@@ -646,6 +663,20 @@ android:id="@+id/btshowpeople"
                         android:layout_gravity="bottom"
                         android:fontFamily="@font/sf_ui_display_medium"/>
 
+                    <TextView
+                        android:layout_width="55dp"
+                        android:layout_height="55dp"
+                        android:text="SKIP"
+                        android:id="@+id/practice_skipp"
+                        android:layout_marginLeft="20dp"
+                        android:gravity="center"
+                        android:layout_marginRight="5dp"
+                        android:background="@drawable/circle_with_shadow_yellow"
+                        android:textColor="#fff"
+                        android:textStyle="bold"
+                        android:textSize="13dp"
+                        android:layout_gravity="bottom"
+                        android:fontFamily="@font/sf_ui_display_medium"/>
 
 
                 </LinearLayout>

@@ -46,6 +46,7 @@
             android:screenOrientation="portrait" />
         <activity android:name=".TermsConditions" />
         <activity android:name=".Withdrawal" />
+        <activity android:name=".PracticeTestList" />
     </application>
 
 </manifest>

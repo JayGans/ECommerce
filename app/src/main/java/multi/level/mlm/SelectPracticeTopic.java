@@ -214,7 +214,7 @@ public class SelectPracticeTopic extends AppCompatActivity {
                 public void onClick(View view) {
                     try{
 
-                            Intent intent= new Intent(SelectPracticeTopic.this,PracticeTest.class);
+                            Intent intent= new Intent(SelectPracticeTopic.this,PracticeTestList.class);
 
                         intent.putExtra("nm",movie.getName());
                         intent.putExtra("cid",movie.getId());

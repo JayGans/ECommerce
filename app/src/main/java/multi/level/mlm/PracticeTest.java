@@ -43,7 +43,10 @@ public class PracticeTest extends Activity {
     ProgressBar progressBar;
     CardView card_a,card_b,card_c,card_d;
     RelativeLayout rel_a,rel_b,rel_c,rel_d;
+    String join_id="";
     int total_q=2,correct=0,wrong=0,earn=0,loss=0;
+    String url_join="http://hsoftech.in/Mcq/MobileApi/join_test.php";
+    String url_bal="http://hsoftech.in/Mcq/MobileApi/getprofile.php";
     String url="http://hsoftech.in/Mcq/MobileApi/get_practice_questions_chapterwise.php";
     String url_add="http://hsoftech.in/Mcq/MobileApi/add_practice_questions_ans.php";
     CountDownTimer TimerCount=null;
@@ -52,20 +55,24 @@ public class PracticeTest extends Activity {
     ProgressBar p_a,p_b,p_c,p_d;
     TextView txt_a,txt_b,txt_c,txt_d;
 
-    int q=0;
+    int q=0,skip=0;
     String [] qlist;
     String [] options;
    String [] ans;
     String [] per;
     String  [] qid;
-
+    TextView txtskip;
+String uid="";
+TextView txtbal;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_practice_test);
-
+uid=SaveSharedPreference.getUserId(PracticeTest.this);
         Chapter_Id=getIntent().getExtras().getString("cid");
+
         Test_id=getIntent().getExtras().getString("tid");
+        jointest(Chapter_Id,Test_id);
         progressBar=(ProgressBar)findViewById(R.id.progressBar);
         _tv = (TextView) findViewById( R.id.txtProgress );
         rel_a=(RelativeLayout)findViewById(R.id.rel_a);
@@ -73,7 +80,7 @@ public class PracticeTest extends Activity {
         rel_c=(RelativeLayout)findViewById(R.id.rel_c);
         rel_d=(RelativeLayout)findViewById(R.id.rel_d);
         txtright=(TextView)findViewById(R.id.txtright);
-
+txtbal=(TextView)findViewById(R.id.bal_av);
         txtearn=(TextView)findViewById(R.id.txtearn);
         txtloss=(TextView)findViewById(R.id.txtloss);
 
@@ -81,7 +88,7 @@ public class PracticeTest extends Activity {
         txt_b=(TextView)findViewById(R.id.txt_b);
         txt_c=(TextView)findViewById(R.id.txt_c);
         txt_d=(TextView)findViewById(R.id.txt_d);
-
+txtskip=(TextView)findViewById(R.id.practice_skipp);
 
         p_a=(ProgressBar) findViewById(R.id.pro_a);
         p_b=(ProgressBar)findViewById(R.id.pro_b);
@@ -126,7 +133,47 @@ public class PracticeTest extends Activity {
         card_b=(CardView)findViewById(R.id.card_b);
         card_c=(CardView)findViewById(R.id.card_c);
         card_d=(CardView)findViewById(R.id.card_d);
+        txtskip.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
 
+
+                skip++;
+                loss=loss-5;
+                rel_a.setVisibility(View.GONE);
+                rel_b.setVisibility(View.GONE);
+                rel_d.setVisibility(View.GONE);
+                rel_c.setVisibility(View.GONE);
+                addans(Chapter_Id,qid[q],"","skip");
+                 if(q+1==total_q) {
+                    try{
+                        Intent intent= new Intent(PracticeTest.this,FinishExam.class);
+                        intent.putExtra("yes",""+correct);
+                        intent.putExtra("no",""+wrong);
+                        intent.putExtra("skip",""+skip);
+                        intent.putExtra("loss",""+loss);
+                        intent.putExtra("earn",""+earn);
+
+                        startActivity(intent);
+                        finish();
+                    }catch (Exception e){}
+                    try{ TimerCount.cancel();}catch (Exception e){}
+                }else
+                {
+                    q++;
+                    q_count.setText((q+1)+"/2");
+                    try{ TimerCount.cancel();}catch (Exception e){}
+                    starttimer();
+                    progressBar.setProgress(100);
+                    card_a.setCardBackgroundColor(Color.parseColor("#FFFFFF"));
+                    card_b.setCardBackgroundColor(Color.parseColor("#FFFFFF"));
+                    card_c.setCardBackgroundColor(Color.parseColor("#FFFFFF"));
+                    card_d.setCardBackgroundColor(Color.parseColor("#FFFFFF"));
+
+                }
+
+            }
+        });
         card_a.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -136,6 +183,7 @@ public class PracticeTest extends Activity {
                 rel_b.setVisibility(View.GONE);
                 rel_d.setVisibility(View.GONE);
                 rel_c.setVisibility(View.GONE);
+                String ansis="wrong";
                 if(opt1.getText().toString().equalsIgnoreCase(ans[q]))
                 {
                     card_a.setCardBackgroundColor(Color.parseColor("#FF4CAF50"));
@@ -144,6 +192,7 @@ public class PracticeTest extends Activity {
                     progress_right.setProgress(correct*10);
                     earn++;
                     txtearn.setText(""+earn);
+                    ansis="correct";
                 }else
                 {
                     loss--;
@@ -161,11 +210,17 @@ public class PracticeTest extends Activity {
 
 
                 }
-                addans(Chapter_Id,qid[q],opt1.getText().toString());
+                addans(Chapter_Id,qid[q],opt1.getText().toString(),ansis);
                 if(q+1==total_q) {
                     try{
                         Intent intent= new Intent(PracticeTest.this,FinishExam.class);
+                        intent.putExtra("yes",""+correct);
+                        intent.putExtra("no",""+wrong);
+                        intent.putExtra("skip",""+skip);
+                        intent.putExtra("loss",""+loss);
+                        intent.putExtra("earn",""+earn);
                         startActivity(intent);
+                        finish();
                     }catch (Exception e){}
                     try{ TimerCount.cancel();}catch (Exception e){}
                 }else
@@ -217,6 +272,7 @@ findViewById(R.id.btback).setOnClickListener(new View.OnClickListener() {
                 rel_b.setVisibility(View.GONE);
                 rel_d.setVisibility(View.GONE);
                 rel_c.setVisibility(View.GONE);
+                String ansis="wrong";
                 if(opt2.getText().toString().equalsIgnoreCase(ans[q]))
                 {
                     card_b.setCardBackgroundColor(Color.parseColor("#FF4CAF50"));
@@ -225,6 +281,7 @@ findViewById(R.id.btback).setOnClickListener(new View.OnClickListener() {
                     progress_right.setProgress(correct*10);
                     earn++;
                     txtearn.setText(""+earn);
+                    ansis="correct";
                 }else
                 {
                     loss--;
@@ -243,11 +300,17 @@ findViewById(R.id.btback).setOnClickListener(new View.OnClickListener() {
 
 
                 }
-                addans(Chapter_Id,qid[q],opt2.getText().toString());
+                addans(Chapter_Id,qid[q],opt2.getText().toString(),ansis);
                 if(q+1==total_q) {
                     try{
                         Intent intent= new Intent(PracticeTest.this,FinishExam.class);
+                        intent.putExtra("yes",""+correct);
+                        intent.putExtra("no",""+wrong);
+                        intent.putExtra("skip",""+skip);
+                        intent.putExtra("loss",""+loss);
+                        intent.putExtra("earn",""+earn);
                         startActivity(intent);
+                        finish();
                     }catch (Exception e){}
                     try{ TimerCount.cancel();}catch (Exception e){}
                 }else
@@ -273,6 +336,7 @@ findViewById(R.id.btback).setOnClickListener(new View.OnClickListener() {
                 rel_b.setVisibility(View.GONE);
                 rel_d.setVisibility(View.GONE);
                 rel_c.setVisibility(View.GONE);
+                String ansis="wrong";
                 if(opt3.getText().toString().equalsIgnoreCase(ans[q]))
                 {
                     card_c.setCardBackgroundColor(Color.parseColor("#FF4CAF50"));
@@ -281,6 +345,7 @@ findViewById(R.id.btback).setOnClickListener(new View.OnClickListener() {
                     progress_right.setProgress(correct*10);
                     earn++;
                     txtearn.setText(""+earn);
+                    ansis="correct";
                 }else
                 {
                     loss--;
@@ -298,11 +363,17 @@ findViewById(R.id.btback).setOnClickListener(new View.OnClickListener() {
 
 
                 }
-                addans(Chapter_Id,qid[q],opt3.getText().toString());
+                addans(Chapter_Id,qid[q],opt3.getText().toString(),ansis);
                 if(q+1==total_q) {
                     try{
                         Intent intent= new Intent(PracticeTest.this,FinishExam.class);
+                        intent.putExtra("yes",""+correct);
+                        intent.putExtra("no",""+wrong);
+                        intent.putExtra("skip",""+skip);
+                        intent.putExtra("loss",""+loss);
+                        intent.putExtra("earn",""+earn);
                         startActivity(intent);
+                        finish();
                     }catch (Exception e){}
                     try{ TimerCount.cancel();}catch (Exception e){}
                 }else
@@ -328,6 +399,7 @@ findViewById(R.id.btback).setOnClickListener(new View.OnClickListener() {
                 rel_b.setVisibility(View.GONE);
                 rel_d.setVisibility(View.GONE);
                 rel_c.setVisibility(View.GONE);
+                String ansis="wrong";
                 if(opt4.getText().toString().equalsIgnoreCase(ans[q]))
                 {
                     card_d.setCardBackgroundColor(Color.parseColor("#FF4CAF50"));
@@ -336,6 +408,7 @@ findViewById(R.id.btback).setOnClickListener(new View.OnClickListener() {
                     progress_right.setProgress(correct*10);
                     earn++;
                     txtearn.setText(""+earn);
+                    ansis="correct";
                 }else
                 {
                     loss--;
@@ -353,11 +426,17 @@ findViewById(R.id.btback).setOnClickListener(new View.OnClickListener() {
 
 
                 }
-                addans(Chapter_Id,qid[q],opt4.getText().toString());
+                addans(Chapter_Id,qid[q],opt4.getText().toString(),ansis);
                 if(q+1==total_q) {
                     try{
                         Intent intent= new Intent(PracticeTest.this,FinishExam.class);
+                        intent.putExtra("yes",""+correct);
+                        intent.putExtra("no",""+wrong);
+                        intent.putExtra("skip",""+skip);
+                        intent.putExtra("loss",""+loss);
+                        intent.putExtra("earn",""+earn);
                         startActivity(intent);
+                        finish();
                     }catch (Exception e){}
                     try{ TimerCount.cancel();}catch (Exception e){}
                 }else
@@ -422,7 +501,13 @@ getList(Chapter_Id,Test_id);
                 if(q+1==total_q) {
                    try{
                        Intent intent= new Intent(PracticeTest.this,FinishExam.class);
+                       intent.putExtra("yes",""+correct);
+                       intent.putExtra("no",""+wrong);
+                       intent.putExtra("skip",""+skip);
+                       intent.putExtra("loss",""+loss);
+                       intent.putExtra("earn",""+earn);
                        startActivity(intent);
+                       finish();
                     }catch (Exception e){}
                 }else
                 {
@@ -512,7 +597,7 @@ if(heroArray.length()>0)
         //adding the string request to request queue
         requestQueue.add(stringRequest);
     }
-     void addans(final String cid,final String qid,final  String ans) {
+     void addans(final String cid,final String qid,final  String ans,final String ansis) {
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url_add,
                 new Response.Listener<String>() {
                     @Override
@@ -522,7 +607,63 @@ if(heroArray.length()>0)
 
 
                         try {
-                            //getting the whole json object from the response
+                            getbal();
+
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        //displaying the error in toast if occurrs
+                        //  Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                }
+        ){
+            @Override
+            protected Map<String, String> getParams()
+            {
+                Map<String, String>  params = new HashMap<String, String>();
+                params.put("uid",SaveSharedPreference.getUserId(PracticeTest.this));
+                params.put("tid",Test_id);
+                params.put("join_id",join_id);
+                params.put("cid",cid);
+                params.put("qid",qid);
+                params.put("ans",ans);
+                params.put("what",ansis);
+
+
+                return params;
+            }
+        };
+
+        //creating a request queue
+        RequestQueue requestQueue = Volley.newRequestQueue(PracticeTest.this);
+
+        //adding the string request to request queue
+        requestQueue.add(stringRequest);
+    }
+    void jointest(final String cid,final String tid) {
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, url_join,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        //hiding the progressbar after completion
+                        //  progressBar.setVisibility(View.INVISIBLE);
+
+
+                        try {
+                          if(response.trim().equalsIgnoreCase("no") || response.trim().isEmpty())
+                          {
+                              Toast.makeText(PracticeTest.this, "Something went wrong please try again.!", Toast.LENGTH_SHORT).show();
+                              finish();
+                          }else
+                          {
+                              join_id=response;
+                              getbal();
+                          }
 
                         } catch (Exception e) {
                             e.printStackTrace();
@@ -543,8 +684,8 @@ if(heroArray.length()>0)
                 Map<String, String>  params = new HashMap<String, String>();
                 params.put("uid",SaveSharedPreference.getUserId(PracticeTest.this));
                 params.put("cid",cid);
-                params.put("qid",qid);
-                params.put("ans",ans);
+                params.put("tid",tid);
+
 
 
                 return params;
@@ -558,5 +699,59 @@ if(heroArray.length()>0)
         requestQueue.add(stringRequest);
     }
 
+    public void getbal() {
 
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, url_bal,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        System.out.print("data" + response);
+                        //  Toast.makeText(Login.this, ""+response, Toast.LENGTH_SHORT).show();
+
+                        try {
+                            //getting the whole json object from the response
+                            JSONObject obj = new JSONObject(response);
+                            JSONArray heroArray = obj.getJSONArray("profile");
+                            // ArrayList<SetGetMethode> result = new ArrayList<>();
+double bal=0;
+                            for (int i = 0; i < heroArray.length(); i++) {
+
+                                JSONObject c = heroArray.getJSONObject(i);
+
+                                try {
+                                    bal=Double.parseDouble(c.getString("points"));
+                                }catch (Exception e){}
+
+
+                            }
+
+                            txtbal.setText("₹"+bal);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        //  pDialog.dismiss();
+
+                    }
+                }
+        ) {
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("uid",uid);
+                return params;
+            }
+        };
+
+        //creating a request queue
+        RequestQueue requestQueue = Volley.newRequestQueue(PracticeTest.this);
+        // pDialog.show();
+        //adding the string request to request queue
+        requestQueue.add(stringRequest);
+    }
 }

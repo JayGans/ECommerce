@@ -1,5 +1,8 @@
 package multi.level.mlm;
 
+import android.app.AlertDialog;
+import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -30,13 +33,17 @@ import java.util.Map;
 
 public class PracticeTestList extends AppCompatActivity {
     private RecyclerView recyclerView;
+String Chapter_id="";
+double bal=0;
+String uid="";
 
     String url="http://hsoftech.in/Mcq/MobileApi/getPractice_tests_List.php";
+    String url_bal="http://hsoftech.in/Mcq/MobileApi/getprofile.php";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select_subject);
-        String sid=getIntent().getExtras().getString("id");
+        Chapter_id =getIntent().getExtras().getString("cid");
         setTitle("Select Paper");
         try
         {
@@ -46,7 +53,7 @@ public class PracticeTestList extends AppCompatActivity {
         {
 
         }
-
+uid=SaveSharedPreference.getUserId(PracticeTestList.this);
         TextView txtnm=(TextView)findViewById(R.id.csnm);
         recyclerView = (RecyclerView)findViewById(R.id.subject_list);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(PracticeTestList.this);
@@ -55,10 +62,10 @@ public class PracticeTestList extends AppCompatActivity {
         recyclerView.setNestedScrollingEnabled(false);
        String str=getIntent().getExtras().getString("nm");
 
-
+getbal();
          txtnm.setText(str);
 
-        getListt(sid);
+        getListt(Chapter_id);
 
     }
 
@@ -158,14 +165,16 @@ public class PracticeTestList extends AppCompatActivity {
 
         public class MyViewHolder extends RecyclerView.ViewHolder {
 
-            public TextView txtnm;
+            public TextView txtnm,txtno;
             LinearLayout lay;
 
 
             public MyViewHolder(View view) {
                 super(view);
-                txtnm = (TextView) itemView.findViewById(R.id.txtnm);
-                lay=(LinearLayout) itemView.findViewById(R.id.laycourse);
+                txtnm = (TextView) itemView.findViewById(R.id.txt_testnm);
+                txtno = (TextView) itemView.findViewById(R.id.txt_qno);
+                lay=(LinearLayout) itemView.findViewById(R.id.laytest);
+
 
             }
         }
@@ -178,7 +187,7 @@ public class PracticeTestList extends AppCompatActivity {
         @Override
         public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             View itemView = LayoutInflater.from(parent.getContext())
-                    .inflate(R.layout.course_adapter, parent, false);
+                    .inflate(R.layout.test_adapter, parent, false);
 
             return new MyViewHolder(itemView);
         }
@@ -188,23 +197,51 @@ public class PracticeTestList extends AppCompatActivity {
             final SetGetMethode movie = moviesList.get(position);
 
             holder.txtnm.setText(movie.getName());
-            Drawable img = getResources().getDrawable(R.drawable.ic_sunny);
+            holder.txtno.setText("Que:"+movie.getNoQ());
+           // Drawable img = getResources().getDrawable(R.drawable.ic_sunny);
             Drawable img1 = getResources().getDrawable(R.drawable.ic_arrow_white);
-            img.setBounds(0, 0, 40, 40);
+           // img.setBounds(0, 0, 40, 40);
             img1.setBounds(0, 0, 50, 50);
-            holder.txtnm.setCompoundDrawables(img, null, img1, null);
+           // holder.txtnm.setCompoundDrawables(null, null, img1, null);
             holder.lay.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View view) {
+                public void onClick(View view){
                     try{
+                           if(bal>0) {
+                               Intent intent = new Intent(PracticeTestList.this, PracticeTest.class);
 
-                            Intent intent= new Intent(PracticeTestList.this,PracticeTest.class);
+                               intent.putExtra("nm", movie.getName());
+                               intent.putExtra("cid", Chapter_id);
+                               intent.putExtra("tid", movie.getId());
+                               intent.putExtra("for", "Practice Test");
+                               startActivity(intent);
+                           }
+                           else
+                           {
+                               try{
+                                   AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(PracticeTestList.this);
+                                   alertDialogBuilder.setMessage("Sorry No Sufficient Points Available.! \nPlease Add Points in your wallet.");
 
-                        intent.putExtra("nm",movie.getName());
-                        intent.putExtra("cid",movie.getId());
-                        intent.putExtra("for","Practice Test");
-                        startActivity(intent);
+
+                                   alertDialogBuilder.setPositiveButton("Cancel",new DialogInterface.OnClickListener() {
+                                       //Override
+                                       public void onClick(DialogInterface dialog, int which) {
+                                           dialog.dismiss();
+                                       }
+                                   });
+                                   alertDialogBuilder.setNegativeButton("Add Points",new DialogInterface.OnClickListener() {
+                                       //Override
+                                       public void onClick(DialogInterface dialog, int which) {
+
+                                       }
+                                   });
+
+                                   AlertDialog alertDialog = alertDialogBuilder.create();
+                                   alertDialog.show();
+                               }catch (Exception e){}
+                           }
                     }catch (Exception e){}
+
                 }
             });
 
@@ -217,5 +254,60 @@ public class PracticeTestList extends AppCompatActivity {
         public int getItemCount() {
             return moviesList.size();
         }
+    }
+
+    public void getbal() {
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, url_bal,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        System.out.print("data" + response);
+                        //  Toast.makeText(Login.this, ""+response, Toast.LENGTH_SHORT).show();
+
+                        try {
+                            //getting the whole json object from the response
+                            JSONObject obj = new JSONObject(response);
+                            JSONArray heroArray = obj.getJSONArray("profile");
+                            // ArrayList<SetGetMethode> result = new ArrayList<>();
+
+                            for (int i = 0; i < heroArray.length(); i++) {
+
+                                JSONObject c = heroArray.getJSONObject(i);
+
+                                try {
+                                   bal=Double.parseDouble(c.getString("points"));
+                                }catch (Exception e){}
+
+
+                            }
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        //  pDialog.dismiss();
+
+                    }
+                }
+        ) {
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("uid",uid);
+                return params;
+            }
+        };
+
+        //creating a request queue
+        RequestQueue requestQueue = Volley.newRequestQueue(PracticeTestList.this);
+        // pDialog.show();
+        //adding the string request to request queue
+        requestQueue.add(stringRequest);
     }
 }

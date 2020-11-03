@@ -113,7 +113,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Total Coins"
+                        android:text="Total Point"
 
                         android:textColor="#0C0E0C"
                         android:textStyle="normal"
@@ -189,7 +189,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="0"
-
+android:id="@+id/txt_total_scr"
                         android:textColor="#0C0E0C"
                         android:textStyle="normal"
 
@@ -234,7 +234,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="0"
-
+android:id="@+id/txt_correct"
                     android:textColor="#0C0E0C"
                     android:textStyle="normal"
                     android:drawablePadding="5dp"
@@ -267,7 +267,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="0"
-
+android:id="@+id/txt_wrong"
                             android:textColor="#0C0E0C"
                             android:textStyle="normal"
                             android:drawablePadding="5dp"
@@ -286,7 +286,7 @@
                     android:layout_height="wrap_content">
 
                     <ProgressBar
-                        android:id="@+id/progressBar"
+                        android:id="@+id/progressBar_f"
                         style="?android:attr/progressBarStyleHorizontal"
                         android:layout_width="110dp"
                         android:layout_height="110dp"
@@ -300,13 +300,14 @@
 
 
                     <TextView
-                        android:id="@+id/txtProgress"
+                        android:id="@+id/txtProgress_f"
                         android:layout_width="85dp"
                         android:layout_height="85dp"
                         android:background="@drawable/circle_blue"
                         android:layout_alignBottom="@+id/progressBar"
                         android:layout_centerInParent="true"
                         android:text="40%"
+
                         android:textSize="24dp"
 
                         android:fontFamily="@font/milkynice"
@@ -351,7 +352,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="0"
-
+android:id="@+id/txt_earns"
                             android:textColor="#0C0E0C"
                             android:textStyle="normal"
                             android:drawablePadding="5dp"
@@ -400,7 +401,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="0"
-
+android:id="@+id/txt_loss"
                             android:textColor="#0C0E0C"
                             android:textStyle="normal"
                             android:drawablePadding="5dp"
@@ -450,7 +451,7 @@
                                 android:textColor="#1B1D25"
                                 android:textStyle="normal"
 
-                                android:id="@+id/opt1"
+                                android:id="@+id/playgain"
                                 android:layout_weight="1"
                                 android:drawablePadding="7dp"
                                 android:layout_margin="1dp"
@@ -522,7 +523,7 @@
                                 android:textStyle="normal"
 
                                 android:layout_weight="1"
-                                android:id="@+id/opt2"
+                                android:id="@+id/gohome"
                                 android:drawablePadding="7dp"
                                 android:layout_margin="1dp"
                                 android:padding="5dp"
