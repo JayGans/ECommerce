@@ -217,7 +217,7 @@ public class SelectSubject extends AppCompatActivity {
                         if(str1.equalsIgnoreCase("Practice Test"))
                              intent= new Intent(SelectSubject.this,SelectPracticeTopic.class);
                         else
-                         intent= new Intent(SelectSubject.this,SelectChapter.class);
+                         intent= new Intent(SelectSubject.this,SelectPracticeTopic.class);
 
                         intent.putExtra("nm",movie.getName());
                         intent.putExtra("id",movie.getId());

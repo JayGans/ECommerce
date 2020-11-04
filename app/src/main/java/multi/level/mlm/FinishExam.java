@@ -2,7 +2,6 @@ package multi.level.mlm;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ProgressBar;
@@ -30,11 +29,10 @@ public class FinishExam extends Activity {
         try{
 
             int ts=Integer.parseInt(correct)+Integer.parseInt(wrong)+Integer.parseInt(skip);
-            int ks=ts/100;
-            int lr=Integer.parseInt(correct);
-            int ps=ks*lr;
-            txtfper.setText(ps+"%");
-            probar.setProgress(ps);
+            Double percentage = ((double)Integer.parseInt(correct)/ts) * 100;
+            txtfper.setText(Math.round(percentage)+"%");
+
+            probar.setProgress(Integer.valueOf(percentage.intValue()));
 
         }catch(Exception e){}
         txttotalearn=(TextView)findViewById(R.id.txttotalearn);
@@ -58,9 +56,24 @@ public class FinishExam extends Activity {
 findViewById(R.id.playgain).setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View view) {
-        finish();
+        Intent intent=new Intent();
+        intent.putExtra("MESSAGE","load");
+        setResult(2,intent);
+        finish();//finishing activity
     }
 });
+
+        findViewById(R.id.btback1).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent();
+                intent.putExtra("MESSAGE","load");
+                setResult(2,intent);
+                finish();//finishing activity
+            }
+        });
+
+
 
         findViewById(R.id.gohome).setOnClickListener(new View.OnClickListener() {
             @Override

@@ -36,7 +36,7 @@ public class PracticeTestList extends AppCompatActivity {
 String Chapter_id="";
 double bal=0;
 String uid="";
-
+TextView txtbal;
     String url="http://hsoftech.in/Mcq/MobileApi/getPractice_tests_List.php";
     String url_bal="http://hsoftech.in/Mcq/MobileApi/getprofile.php";
     @Override
@@ -53,8 +53,11 @@ String uid="";
         {
 
         }
+
 uid=SaveSharedPreference.getUserId(PracticeTestList.this);
         TextView txtnm=(TextView)findViewById(R.id.csnm);
+        txtbal=(TextView)findViewById(R.id.bal_av1);
+        txtbal.setVisibility(View.VISIBLE);
         recyclerView = (RecyclerView)findViewById(R.id.subject_list);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(PracticeTestList.this);
         recyclerView.setLayoutManager(mLayoutManager);
@@ -214,7 +217,7 @@ getbal();
                                intent.putExtra("cid", Chapter_id);
                                intent.putExtra("tid", movie.getId());
                                intent.putExtra("for", "Practice Test");
-                               startActivity(intent);
+                               startActivityForResult(intent,2);
                            }
                            else
                            {
@@ -281,7 +284,7 @@ getbal();
 
 
                             }
-
+                            txtbal.setText("₹"+bal);
                         } catch (JSONException e) {
                             e.printStackTrace();
 
@@ -309,5 +312,16 @@ getbal();
         // pDialog.show();
         //adding the string request to request queue
         requestQueue.add(stringRequest);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data)
+    {
+        super.onActivityResult(requestCode, resultCode, data);
+        // check if the request code is same as what is passed  here it is 2
+        if(requestCode==2)
+        {
+            getbal();
+        }
     }
 }

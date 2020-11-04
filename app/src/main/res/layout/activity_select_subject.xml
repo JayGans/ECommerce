@@ -10,18 +10,42 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#B0FFFFFF"
+            android:orientation="horizontal">
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text=""
-            android:background="#B0FFFFFF"
+            android:layout_weight="1"
+
             android:gravity="center"
             android:id="@+id/csnm"
             android:textColor="#1E1729"
            android:fontFamily="@font/milkynice"
             android:textSize="16dp"
             android:padding="7dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="₹0"
+                android:drawableLeft="@drawable/ic_wallet"
+                android:textColor="#0C0E0C"
+                android:textStyle="bold"
+                android:visibility="gone"
+                android:id="@+id/bal_av1"
+                android:drawablePadding="5dp"
+                android:layout_marginRight="3dp"
 
+
+                android:gravity="start"
+                android:fontFamily="@font/sf_ui_display_medium"
+                android:textSize="16dp"
+                android:padding="7dp"
+                />
+        </LinearLayout>
     <android.support.v7.widget.RecyclerView
         android:id="@+id/subject_list"
 

@@ -32,13 +32,15 @@ import java.util.Map;
 
 public class SelectPracticeTopic extends AppCompatActivity {
     private RecyclerView recyclerView;
-
+String str1="";
     String url="http://hsoftech.in/Mcq/MobileApi/getTopicList.php";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select_subject);
         String sid=getIntent().getExtras().getString("id");
+        str1=getIntent().getExtras().getString("for");
+
         setTitle("Select Topic");
         try
         {
@@ -214,12 +216,23 @@ public class SelectPracticeTopic extends AppCompatActivity {
                 public void onClick(View view) {
                     try{
 
-                            Intent intent= new Intent(SelectPracticeTopic.this,PracticeTestList.class);
 
-                        intent.putExtra("nm",movie.getName());
-                        intent.putExtra("cid",movie.getId());
-                        intent.putExtra("for","Practice Test");
-                        startActivity(intent);
+                        try{
+                            Intent intent=null;
+                            if(str1.equalsIgnoreCase("Practice Test"))
+                                intent= new Intent(SelectPracticeTopic.this,PracticeTestList.class);
+                            else if(str1.equalsIgnoreCase("video"))
+                                intent= new Intent(SelectPracticeTopic.this,SelectVideo.class);
+                                else
+                                intent= new Intent(SelectPracticeTopic.this,SelectChapter.class);
+
+                            intent.putExtra("nm",movie.getName());
+                            intent.putExtra("cid",movie.getId());
+                            intent.putExtra("for",str1);
+                            startActivity(intent);
+                        }catch (Exception e){}
+
+
                     }catch (Exception e){}
                 }
             });

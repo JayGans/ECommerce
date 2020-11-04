@@ -43,7 +43,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:padding="4dp"
-                        android:id="@+id/btback"
+                        android:id="@+id/btback1"
                         android:layout_marginRight="7dp"
                         android:layout_marginLeft="5dp"
                         android:background="@drawable/ic_arrow_back"
@@ -294,7 +294,7 @@ android:id="@+id/txt_wrong"
                         android:indeterminate="false"
                         android:max="100"
                         android:background="@drawable/circle_shape"
-                        android:progress="40"
+                        android:progress="0"
                         android:progressDrawable="@drawable/custom_progressbar_drawable"
                         android:secondaryProgress="0" />
 
@@ -306,7 +306,7 @@ android:id="@+id/txt_wrong"
                         android:background="@drawable/circle_blue"
                         android:layout_alignBottom="@+id/progressBar"
                         android:layout_centerInParent="true"
-                        android:text="40%"
+                        android:text="0%"
 
                         android:textSize="24dp"
 
