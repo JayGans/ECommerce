@@ -148,11 +148,12 @@ public class QuationList extends Activity {
                 addans(Chapter_Id,qid[q],"","skip");
                 if(q+1==total_q) {
                     try{
-                        Intent intent= new Intent(QuationList.this,FinishExam.class);
+                        Intent intent= new Intent(QuationList.this,FinishAllRankExam.class);
                         intent.putExtra("yes",""+correct);
                         intent.putExtra("no",""+wrong);
                         intent.putExtra("skip",""+skip);
                         intent.putExtra("loss",""+loss);
+                        intent.putExtra("join",""+join_id);
                         intent.putExtra("earn",""+earn);
 
                         startActivity(intent);
@@ -214,10 +215,11 @@ public class QuationList extends Activity {
                 addans(Chapter_Id,qid[q],opt1.getText().toString(),ansis);
                 if(q+1==total_q) {
                     try{
-                        Intent intent= new Intent(QuationList.this,FinishExam.class);
+                        Intent intent= new Intent(QuationList.this,FinishAllRankExam.class);
                         intent.putExtra("yes",""+correct);
                         intent.putExtra("no",""+wrong);
                         intent.putExtra("skip",""+skip);
+                        intent.putExtra("join",""+join_id);
                         intent.putExtra("loss",""+loss);
                         intent.putExtra("earn",""+earn);
                         startActivity(intent);
@@ -304,10 +306,11 @@ public class QuationList extends Activity {
                 addans(Chapter_Id,qid[q],opt2.getText().toString(),ansis);
                 if(q+1==total_q) {
                     try{
-                        Intent intent= new Intent(QuationList.this,FinishExam.class);
+                        Intent intent= new Intent(QuationList.this,FinishAllRankExam.class);
                         intent.putExtra("yes",""+correct);
                         intent.putExtra("no",""+wrong);
                         intent.putExtra("skip",""+skip);
+                        intent.putExtra("join",""+join_id);
                         intent.putExtra("loss",""+loss);
                         intent.putExtra("earn",""+earn);
                         startActivity(intent);
@@ -367,10 +370,11 @@ public class QuationList extends Activity {
                 addans(Chapter_Id,qid[q],opt3.getText().toString(),ansis);
                 if(q+1==total_q) {
                     try{
-                        Intent intent= new Intent(QuationList.this,FinishExam.class);
+                        Intent intent= new Intent(QuationList.this,FinishAllRankExam.class);
                         intent.putExtra("yes",""+correct);
                         intent.putExtra("no",""+wrong);
                         intent.putExtra("skip",""+skip);
+                        intent.putExtra("join",""+join_id);
                         intent.putExtra("loss",""+loss);
                         intent.putExtra("earn",""+earn);
                         startActivity(intent);
@@ -430,9 +434,10 @@ public class QuationList extends Activity {
                 addans(Chapter_Id,qid[q],opt4.getText().toString(),ansis);
                 if(q+1==total_q) {
                     try{
-                        Intent intent= new Intent(QuationList.this,FinishExam.class);
+                        Intent intent= new Intent(QuationList.this,FinishAllRankExam.class);
                         intent.putExtra("yes",""+correct);
                         intent.putExtra("no",""+wrong);
+                        intent.putExtra("join",""+join_id);
                         intent.putExtra("skip",""+skip);
                         intent.putExtra("loss",""+loss);
                         intent.putExtra("earn",""+earn);
@@ -501,10 +506,11 @@ public class QuationList extends Activity {
 
                 if(q+1==total_q) {
                     try{
-                        Intent intent= new Intent(QuationList.this,FinishExam.class);
+                        Intent intent= new Intent(QuationList.this,FinishAllRankExam.class);
                         intent.putExtra("yes",""+correct);
                         intent.putExtra("no",""+wrong);
                         intent.putExtra("skip",""+skip);
+                        intent.putExtra("join",""+join_id);
                         intent.putExtra("loss",""+loss);
                         intent.putExtra("earn",""+earn);
                         startActivity(intent);
