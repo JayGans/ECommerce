@@ -2,6 +2,7 @@ package multi.level.mlm;
 
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -32,6 +33,7 @@ public class SelectSubject extends AppCompatActivity {
     String str1="",str="";
     String cid="";
     private RecyclerView recyclerView;
+    private SwipeRefreshLayout swipeRefreshLayout;
     String url="http://hsoftech.in/Mcq/MobileApi/getSubjectList.php";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +51,8 @@ public class SelectSubject extends AppCompatActivity {
         {
 
         }
+        swipeRefreshLayout = (SwipeRefreshLayout)findViewById(R.id.swipe_sub);
+
         TextView txtnm=(TextView)findViewById(R.id.csnm);
         recyclerView = (RecyclerView)findViewById(R.id.subject_list);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(SelectSubject.this);
@@ -60,24 +64,40 @@ public class SelectSubject extends AppCompatActivity {
         //TextView txt=(TextView)findViewById(R.id.txttestnm);
         // txt.setText(str);
 
-        getListt(cid);
-        /*findViewById(R.id.btgochap).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent= new Intent(SelectCourse.this,SelectChapter.class);
-                intent.putExtra("nm","Chapter Name");
-                intent.putExtra("for",str1);
-                startActivity(intent);
-            }
-        });
 
-        findViewById(R.id.btbackchap).setOnClickListener(new View.OnClickListener() {
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
-            public void onClick(View view) {
-               finish();
+            public void onRefresh() {
+                try {
+                    swipeRefreshLayout.setRefreshing(true);
+                    if (new ConnectionDetector(SelectSubject.this).isConnectingToInternet()) {
+                        getListt(cid);
+                    } else {
+                        InternetError.showerro(SelectSubject.this);
+                    }
+
+                } catch (Exception e) {
+
+                }
             }
         });
-*/
+        swipeRefreshLayout.post(new Runnable() {
+            @Override
+            public void run() {
+                swipeRefreshLayout.setRefreshing(true);
+
+                try {
+                    if (new ConnectionDetector(SelectSubject.this).isConnectingToInternet()) {
+                        getListt(cid);
+                    } else {
+                        InternetError.showerro(SelectSubject.this);
+                    }
+
+                } catch (Exception e) {
+
+                }
+            }
+        });
     }
 
     private void getListt(final String cid) {
@@ -88,7 +108,7 @@ public class SelectSubject extends AppCompatActivity {
                         //hiding the progressbar after completion
                         //  progressBar.setVisibility(View.INVISIBLE);
 
-
+                        swipeRefreshLayout.setRefreshing(false);
                         try {
                             //getting the whole json object from the response
                             JSONObject obj = new JSONObject(response);
@@ -120,12 +140,14 @@ public class SelectSubject extends AppCompatActivity {
 
                         } catch (JSONException e) {
                             e.printStackTrace();
+                            swipeRefreshLayout.setRefreshing(false);
                         }
                     }
                 },
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
+                        swipeRefreshLayout.setRefreshing(false);
                         //displaying the error in toast if occurrs
                         //  Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
                     }

@@ -1,9 +1,7 @@
 package multi.level.mlm;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
-import android.speech.tts.TextToSpeech;
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -28,23 +26,17 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
 
-public class SelectPracticeTopic extends AppCompatActivity {
+public class History extends AppCompatActivity {
     private RecyclerView recyclerView;
-String str1="";
-    String sid="";
-    private SwipeRefreshLayout swipeRefreshLayout;
-    String url="http://hsoftech.in/Mcq/MobileApi/getTopicList.php";
+    String url="http://hsoftech.in/Mcq/MobileApi/getrankhistory.php";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_select_subject);
-         sid=getIntent().getExtras().getString("id");
-        str1=getIntent().getExtras().getString("for");
+        setContentView(R.layout.activity_history);
 
-        setTitle("Select Topic");
+        setTitle("Join Test History");
         try
         {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -53,64 +45,31 @@ String str1="";
         {
 
         }
-        swipeRefreshLayout = (SwipeRefreshLayout)findViewById(R.id.swipe_sub);
-
-        TextView txtnm=(TextView)findViewById(R.id.csnm);
-        recyclerView = (RecyclerView)findViewById(R.id.subject_list);
-        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(SelectPracticeTopic.this);
+        recyclerView = (RecyclerView)findViewById(R.id.history_list);
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(History.this);
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setHasFixedSize(true);
         recyclerView.setNestedScrollingEnabled(false);
-       String str=getIntent().getExtras().getString("nm");
 
+        getListt();
 
-         txtnm.setText(str);
-
-
-        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                try {
-                    swipeRefreshLayout.setRefreshing(true);
-                    if (new ConnectionDetector(SelectPracticeTopic.this).isConnectingToInternet()) {
-                        getListt(sid);
-                    } else {
-                        InternetError.showerro(SelectPracticeTopic.this);
-                    }
-
-                } catch (Exception e) {
-
-                }
-            }
-        });
-        swipeRefreshLayout.post(new Runnable() {
-            @Override
-            public void run() {
-                swipeRefreshLayout.setRefreshing(true);
-
-                try {
-                    if (new ConnectionDetector(SelectPracticeTopic.this).isConnectingToInternet()) {
-                        getListt(sid);
-                    } else {
-                        InternetError.showerro(SelectPracticeTopic.this);
-                    }
-
-                } catch (Exception e) {
-
-                }
-            }
-        });
     }
 
-    private void getListt(final String cid) {
+    private void getListt() {
+        final ProgressDialog pDialog;
+        pDialog = new ProgressDialog(History.this);
+        pDialog.setMessage("Wait..");
+        pDialog.setIndeterminate(false);
+        pDialog.setCancelable(true);
+        pDialog.show();
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         //hiding the progressbar after completion
                         //  progressBar.setVisibility(View.INVISIBLE);
+pDialog.dismiss();
 
-                        swipeRefreshLayout.setRefreshing(false);
                         try {
                             //getting the whole json object from the response
                             JSONObject obj = new JSONObject(response);
@@ -126,9 +85,13 @@ String str1="";
 
 
                                 SetGetMethode s= new SetGetMethode();
-                                s.setId(c.getString("id"));
+                               // s.setId(c.getString("id"));
                                 s.setName(c.getString("nm"));
-
+                                s.setNoQ(c.getString("no"));
+                                s.setWrong(c.getString("w"));
+                                s.setCorrect(c.getString("c"));
+                                s.setRank(c.getString("rank"));
+                                s.setDate(c.getString("dt"));
 
                                 list1.add(s);
 
@@ -142,16 +105,16 @@ String str1="";
 
                         } catch (JSONException e) {
                             e.printStackTrace();
-                            swipeRefreshLayout.setRefreshing(false);
+                            pDialog.dismiss();
                         }
                     }
                 },
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
+                        pDialog.dismiss();
                         //displaying the error in toast if occurrs
-                        swipeRefreshLayout.setRefreshing(false);
-                        //  Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
+                       //  Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 }
         ){
@@ -159,7 +122,7 @@ String str1="";
             protected Map<String, String> getParams()
             {
                 Map<String, String>  params = new HashMap<String, String>();
-                params.put("cid",cid);
+                params.put("uid",SaveSharedPreference.getUserId(History.this));
 
 
                 return params;
@@ -167,7 +130,7 @@ String str1="";
         };
 
         //creating a request queue
-        RequestQueue requestQueue = Volley.newRequestQueue(SelectPracticeTopic.this);
+        RequestQueue requestQueue = Volley.newRequestQueue(History.this);
 
         //adding the string request to request queue
         requestQueue.add(stringRequest);
@@ -198,15 +161,18 @@ String str1="";
 
         public class MyViewHolder extends RecyclerView.ViewHolder {
 
-            public TextView txtnm;
+            public TextView txtnm,txtdt,txtrank,txtcorrect,txtwrong,txtnoofq;
             LinearLayout lay;
 
 
             public MyViewHolder(View view) {
                 super(view);
-                txtnm = (TextView) itemView.findViewById(R.id.txtnm);
-                lay=(LinearLayout) itemView.findViewById(R.id.laycourse);
-
+                txtnm = (TextView) itemView.findViewById(R.id.paper_nm);
+                txtdt = (TextView) itemView.findViewById(R.id.paper_dt);
+                txtcorrect = (TextView) itemView.findViewById(R.id.paper_c);
+                txtnoofq = (TextView) itemView.findViewById(R.id.paper_noq);
+                txtrank = (TextView) itemView.findViewById(R.id.paper_rank);
+                txtwrong = (TextView) itemView.findViewById(R.id.paper_w);
             }
         }
 
@@ -218,7 +184,7 @@ String str1="";
         @Override
         public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             View itemView = LayoutInflater.from(parent.getContext())
-                    .inflate(R.layout.course_adapter, parent, false);
+                    .inflate(R.layout.history_adapter, parent, false);
 
             return new MyViewHolder(itemView);
         }
@@ -228,36 +194,12 @@ String str1="";
             final SetGetMethode movie = moviesList.get(position);
 
             holder.txtnm.setText(movie.getName());
-            Drawable img = getResources().getDrawable(R.drawable.ic_sunny);
-            Drawable img1 = getResources().getDrawable(R.drawable.ic_arrow_white);
-            img.setBounds(0, 0, 40, 40);
-            img1.setBounds(0, 0, 50, 50);
-            holder.txtnm.setCompoundDrawables(img, null, img1, null);
-            holder.lay.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    try{
+            holder.txtwrong.setText("Wrong :"+movie.getWrong());
+            holder.txtcorrect.setText("Correct :"+movie.getCorrect());
+            holder.txtnoofq.setText("No Of Que :"+movie.getNoQ());
+            holder.txtrank.setText("Rank No-#"+movie.getRank());
+            holder.txtdt.setText("Date :"+movie.getDate());
 
-
-                        try{
-                            Intent intent=null;
-                            if(str1.equalsIgnoreCase("Practice Test"))
-                                intent= new Intent(SelectPracticeTopic.this,PracticeTestList.class);
-                            else if(str1.equalsIgnoreCase("video"))
-                                intent= new Intent(SelectPracticeTopic.this,SelectVideo.class);
-                                else
-                                intent= new Intent(SelectPracticeTopic.this,SelectChapter.class);
-
-                            intent.putExtra("nm",movie.getName());
-                            intent.putExtra("cid",movie.getId());
-                            intent.putExtra("for",str1);
-                            startActivity(intent);
-                        }catch (Exception e){}
-
-
-                    }catch (Exception e){}
-                }
-            });
 
 
 

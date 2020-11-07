@@ -134,6 +134,33 @@ public class QuationList extends Activity {
         card_b=(CardView)findViewById(R.id.card_b3);
         card_c=(CardView)findViewById(R.id.card_c3);
         card_d=(CardView)findViewById(R.id.card_d3);
+        findViewById(R.id.bt50501).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                try{
+                    if(opt1.getText().toString().equalsIgnoreCase(ans[q]))
+                    {
+                        card_b.setVisibility(View.INVISIBLE);
+                        card_c.setVisibility(View.INVISIBLE);
+                    }else if(opt2.getText().toString().equalsIgnoreCase(ans[q]))
+                    {
+                        card_a.setVisibility(View.INVISIBLE);
+                        card_d.setVisibility(View.INVISIBLE);
+                    }
+                    else if(opt3.getText().toString().equalsIgnoreCase(ans[q]))
+                    {
+                        card_b.setVisibility(View.INVISIBLE);
+                        card_d.setVisibility(View.INVISIBLE);
+                    }
+                    else if(opt4.getText().toString().equalsIgnoreCase(ans[q]))
+                    {
+                        card_c.setVisibility(View.INVISIBLE);
+                        card_b.setVisibility(View.INVISIBLE);
+                    }
+
+                }catch (Exception e){}
+            }
+        });
         txtskip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -259,6 +286,7 @@ public class QuationList extends Activity {
                         //Override
                         public void onClick(DialogInterface dialog, int which) {
                             finish();
+                            try{ TimerCount.cancel();}catch (Exception e){}
                         }
                     });
 
@@ -472,8 +500,49 @@ public class QuationList extends Activity {
         getList(Chapter_Id,Test_id);
 
     }
+
+
+    public boolean onSupportNavigateUp()
+    {
+        onBackPressed();
+        return true;
+    }
+
+    @Override
+    public void onBackPressed()
+    {
+        try{
+            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(QuationList.this);
+            alertDialogBuilder.setMessage("Do you want to exit?");
+
+
+            alertDialogBuilder.setPositiveButton("No",new DialogInterface.OnClickListener() {
+                //Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.dismiss();
+                }
+            });
+            alertDialogBuilder.setNegativeButton("Yes",new DialogInterface.OnClickListener() {
+                //Override
+                public void onClick(DialogInterface dialog, int which) {
+                    finish();
+                    try{ TimerCount.cancel();}catch (Exception e){}
+                }
+            });
+
+            AlertDialog alertDialog = alertDialogBuilder.create();
+            alertDialog.show();
+        }catch (Exception e){}
+
+
+    }
     public void starttimer()
     {
+        card_a.setVisibility(View.VISIBLE);
+        card_b.setVisibility(View.VISIBLE);
+        card_c.setVisibility(View.VISIBLE);
+        card_d.setVisibility(View.VISIBLE);
+
         txtque.setText(qlist[q]);
         String opt=options[q];
         String [] str=opt.split("~");

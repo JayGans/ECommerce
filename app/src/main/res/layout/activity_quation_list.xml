@@ -604,6 +604,7 @@
                     android:background="@drawable/circle_with_shadow_blue"
                     android:textColor="#fff"
                     android:textSize="13dp"
+                    android:id="@+id/bt50501"
                     android:layout_gravity="bottom"
                     android:fontFamily="@font/sf_ui_display_medium"/>
 

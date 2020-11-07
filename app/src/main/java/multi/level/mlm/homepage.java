@@ -45,7 +45,7 @@ String bal="",twoper="0",oneper="0",halfper="0",earnbal="0";
     TextView txtref;
     String url="http://hsoftech.in/Mcq/MobileApi/getbal.php";
 
-    private SwipeRefreshLayout swipeRefreshLayout;
+
     public homepage()
     {
         // Required empty public constructor
@@ -58,7 +58,6 @@ String bal="",twoper="0",oneper="0",halfper="0",earnbal="0";
         // Inflate the layout for this fragment
         rootView= inflater.inflate(R.layout.fragment_homepage, container, false);
 
-        swipeRefreshLayout = (SwipeRefreshLayout)rootView. findViewById(R.id.swipe_refresh);
 
         deposit=(CardView) rootView.findViewById(R.id.carddepo);
         //withdrawal=(CardView) rootView.findViewById(R.id.cardwith);
@@ -127,41 +126,16 @@ try{
 });
 
 
+ rootView.findViewById(R.id.cmptest).setOnClickListener(new View.OnClickListener() {
+     @Override
+     public void onClick(View view) {
+try{
+    startActivity(new Intent(getActivity(),History.class));
+}catch (Exception e){}
+     }
+ });
 
 
-        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                try {
-                    swipeRefreshLayout.setRefreshing(false);
-                    if (new ConnectionDetector(getActivity()).isConnectingToInternet()) {
-                      //  getbal();
-                    } else {
-                        InternetError.showerro(getActivity());
-                    }
-
-                } catch (Exception e) {
-
-                }
-            }
-        });
-        swipeRefreshLayout.post(new Runnable() {
-            @Override
-            public void run() {
-                swipeRefreshLayout.setRefreshing(false);
-
-                try {
-                    if (new ConnectionDetector(getActivity()).isConnectingToInternet()) {
-                       // getbal();
-                    } else {
-                        InternetError.showerro(getActivity());
-                    }
-
-                } catch (Exception e) {
-
-                }
-            }
-        });
 
 
 
@@ -169,70 +143,6 @@ try{
     }
 
 
-    private void getbal() {
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        //hiding the progressbar after completion
-                        //  progressBar.setVisibility(View.INVISIBLE);
-                        swipeRefreshLayout.setRefreshing(false);
-
-                        try {
-                            //getting the whole json object from the response
-                            JSONObject obj = new JSONObject(response);
-                                JSONArray heroArray = obj.getJSONArray("data");
-                            //  Toast.makeText(LevelDetails.this, ""+heroArray, Toast.LENGTH_SHORT).show();
-                             for (int i = 0; i < heroArray.length(); i++) {
-                                //getting the json object of the particular index inside the array
-                                JSONObject c = heroArray.getJSONObject(i);
-                                 bal=c.getString("bal");
-                                txtbal.setText("₹ "+c.getString("bal"));
-                                 txtearn.setText("₹ "+c.getString("earn"));
-                                 txtearnbal.setText("₹ "+c.getString("earnbal"));
-                                 txtdepo.setText("₹ "+c.getString("deposit"));
-                                 txtwith.setText("₹ "+c.getString("with"));
-                                 txtearnwith.setText("₹ "+c.getString("earnwith"));
-                                 twoper=c.getString("two");
-                                 oneper=c.getString("one");
-                                 halfper=c.getString("half");
-                                 earnbal=c.getString("earnbal");
-
-                            }
-
-
-
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        //displaying the error in toast if occurrs
-                        swipeRefreshLayout.setRefreshing(false);
-                        //  Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
-                    }
-                }
-        ){
-            @Override
-            protected Map<String, String> getParams()
-            {
-                Map<String, String>  params = new HashMap<String, String>();
-                params.put("uid",SaveSharedPreference.getUserId(getActivity()));
-
-
-                return params;
-            }
-        };
-
-        //creating a request queue
-        RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
-
-        //adding the string request to request queue
-        requestQueue.add(stringRequest);
-    }
 
     private void Reflink() {
 

@@ -133,6 +133,33 @@ txtskip=(TextView)findViewById(R.id.practice_skipp);
         card_b=(CardView)findViewById(R.id.card_b);
         card_c=(CardView)findViewById(R.id.card_c);
         card_d=(CardView)findViewById(R.id.card_d);
+        findViewById(R.id.bt5050).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                try{
+                    if(opt1.getText().toString().equalsIgnoreCase(ans[q]))
+                    {
+                        card_b.setVisibility(View.INVISIBLE);
+                        card_c.setVisibility(View.INVISIBLE);
+                    }else if(opt2.getText().toString().equalsIgnoreCase(ans[q]))
+                    {
+                        card_a.setVisibility(View.INVISIBLE);
+                        card_d.setVisibility(View.INVISIBLE);
+                    }
+                    else if(opt3.getText().toString().equalsIgnoreCase(ans[q]))
+                    {
+                        card_b.setVisibility(View.INVISIBLE);
+                        card_d.setVisibility(View.INVISIBLE);
+                    }
+                    else if(opt4.getText().toString().equalsIgnoreCase(ans[q]))
+                    {
+                        card_c.setVisibility(View.INVISIBLE);
+                        card_b.setVisibility(View.INVISIBLE);
+                    }
+
+                }catch (Exception e){}
+            }
+        });
         txtskip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -468,6 +495,10 @@ getList(Chapter_Id,Test_id);
     }
     public void starttimer()
     {
+        card_a.setVisibility(View.VISIBLE);
+        card_b.setVisibility(View.VISIBLE);
+        card_c.setVisibility(View.VISIBLE);
+        card_d.setVisibility(View.VISIBLE);
         txtque.setText(qlist[q]);
         String opt=options[q];
         String [] str=opt.split("~");

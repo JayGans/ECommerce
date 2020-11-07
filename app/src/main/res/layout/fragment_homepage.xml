@@ -8,12 +8,7 @@
 
     <!-- TODO: Update blank fragment layout -->
 
-    <android.support.v4.widget.SwipeRefreshLayout
-    android:id="@+id/swipe_refresh"
-    android:layout_width="match_parent"
 
-    android:layout_height="match_parent"
-    >
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -63,8 +58,8 @@ card_view:cardBackgroundColor="#079737"
                     android:gravity="center"
                     android:layout_weight="1">
 <ImageView
-    android:layout_width="120dp"
-    android:layout_height="120dp"
+    android:layout_width="80dp"
+    android:layout_height="80dp"
     android:background="@drawable/video"/>
                     <TextView
                         android:layout_width="wrap_content"
@@ -106,8 +101,8 @@ card_view:cardBackgroundColor="#079737"
                         android:background="#39fffdfd"
                         android:layout_weight="1">
                         <ImageView
-                            android:layout_width="150dp"
-                            android:layout_height="120dp"
+                            android:layout_width="100dp"
+                            android:layout_height="80dp"
                             android:background="@drawable/exam"/>
                         <TextView
                             android:layout_width="wrap_content"
@@ -121,6 +116,50 @@ card_view:cardBackgroundColor="#079737"
                             android:id="@+id/depoamt"
                             android:textColor="#ffffff"
                             android:text="Test Your Knowledge"/>
+                    </LinearLayout>
+                </android.support.v7.widget.CardView>
+
+                <android.support.v7.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    card_view:cardBackgroundColor="#009688"
+                    android:elevation="8dp"
+                    android:divider="@android:color/transparent"
+                    android:dividerHeight="0.0px"
+                    android:clipToPadding="false"
+                    android:clipChildren="false"
+                    card_view:cardUseCompatPadding="true"
+
+                    card_view:cardElevation="5dp"
+                    card_view:cardPreventCornerOverlap="false">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:padding="5dp"
+                        android:id="@+id/cmptest"
+                        android:background="#39fffdfd"
+                        android:layout_weight="1">
+                        <ImageView
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
+                            android:layout_marginTop="7dp"
+                            android:background="@drawable/history"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+
+                            android:layout_marginTop="5dp"
+                            android:layout_marginBottom="5dp"
+                            android:fontFamily="@font/milkynice"
+                            android:textSize="22dp"
+                            android:textStyle="bold"
+
+                            android:textColor="#ffffff"
+                            android:text="Join Test History"/>
                     </LinearLayout>
                 </android.support.v7.widget.CardView>
             </LinearLayout>
@@ -204,7 +243,7 @@ card_view:cardBackgroundColor="#079737"
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Anuthing which you want to add there instructions"
+                        android:text="We can add Anything which you want ."
                         android:textAllCaps="false"
                         android:textStyle="normal"
                         android:layout_weight="1"
@@ -228,5 +267,5 @@ card_view:cardBackgroundColor="#079737"
 
         </LinearLayout>
     </ScrollView>
-    </android.support.v4.widget.SwipeRefreshLayout>
+
 </FrameLayout>

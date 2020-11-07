@@ -118,5 +118,31 @@ String Id;
     String NoQ;
     String Fees;
 
+    public String getWrong() {
+        return Wrong;
+    }
+
+    public void setWrong(String wrong) {
+        Wrong = wrong;
+    }
+
+    public String getCorrect() {
+        return Correct;
+    }
+
+    public void setCorrect(String correct) {
+        Correct = correct;
+    }
+
+    public String getRank() {
+        return Rank;
+    }
+
+    public void setRank(String rank) {
+        Rank = rank;
+    }
+
+    String Wrong,Correct,Rank;
+
 
 }
