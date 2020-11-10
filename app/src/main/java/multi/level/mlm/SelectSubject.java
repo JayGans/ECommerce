@@ -42,7 +42,7 @@ public class SelectSubject extends AppCompatActivity {
         str1=getIntent().getExtras().getString("for");
         cid=getIntent().getExtras().getString("cid");
 
-        setTitle("Select Subject");
+        setTitle(str1);
         try
         {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);

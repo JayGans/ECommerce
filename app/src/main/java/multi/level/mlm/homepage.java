@@ -69,7 +69,7 @@ rootView.findViewById(R.id.laylevel1).setOnClickListener(new View.OnClickListene
         try{
             Intent intent= new Intent(getActivity(),SelectCourse.class);
             intent.putExtra("nm","Learn Through Video");
-            intent.putExtra("for","video");
+            intent.putExtra("for","Learn Through Video");
             startActivity(intent);
         }catch (Exception e){}
     }

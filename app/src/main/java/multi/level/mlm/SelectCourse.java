@@ -41,7 +41,7 @@ public class SelectCourse extends AppCompatActivity {
         setContentView(R.layout.activity_select_course);
          str1=getIntent().getExtras().getString("for");
 
-        setTitle("Select Course");
+        setTitle(str1);
         try
         {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -50,6 +50,7 @@ public class SelectCourse extends AppCompatActivity {
         {
 
         }
+
         swipeRefreshLayout = (SwipeRefreshLayout)findViewById(R.id.swipe_course);
 
         recyclerView = (RecyclerView)findViewById(R.id.course_list);

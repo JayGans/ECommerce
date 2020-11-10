@@ -282,6 +282,7 @@ findViewById(R.id.btback).setOnClickListener(new View.OnClickListener() {
             alertDialogBuilder.setNegativeButton("Yes",new DialogInterface.OnClickListener() {
                 //Override
                 public void onClick(DialogInterface dialog, int which) {
+                    TimerCount.cancel();
                     finish();
                 }
             });
@@ -491,6 +492,40 @@ findViewById(R.id.btshowpeople).setOnClickListener(new View.OnClickListener() {
 });
 
 getList(Chapter_Id,Test_id);
+
+    }
+    public boolean onSupportNavigateUp()
+    {
+        onBackPressed();
+        return true;
+    }
+
+    @Override
+    public void onBackPressed()
+    {
+        try{
+            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(PracticeTest.this);
+            alertDialogBuilder.setMessage("Do you want to exit?");
+
+
+            alertDialogBuilder.setPositiveButton("No",new DialogInterface.OnClickListener() {
+                //Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.dismiss();
+                }
+            });
+            alertDialogBuilder.setNegativeButton("Yes",new DialogInterface.OnClickListener() {
+                //Override
+                public void onClick(DialogInterface dialog, int which) {
+                    finish();
+                    try{ TimerCount.cancel();}catch (Exception e){}
+                }
+            });
+
+            AlertDialog alertDialog = alertDialogBuilder.create();
+            alertDialog.show();
+        }catch (Exception e){}
+
 
     }
     public void starttimer()

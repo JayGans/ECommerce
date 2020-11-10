@@ -144,5 +144,25 @@ String Id;
 
     String Wrong,Correct,Rank;
 
+    public String getVideoUrl() {
+        return VideoUrl;
+    }
+
+    public void setVideoUrl(String videoUrl) {
+        VideoUrl = videoUrl;
+    }
+
+    String VideoUrl;
+
+    public int getIcon() {
+        return Icon;
+    }
+
+    public void setIcon(int icon) {
+        Icon = icon;
+    }
+
+    int Icon;
+
 
 }

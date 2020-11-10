@@ -5,6 +5,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -36,7 +37,7 @@ public class SelectChapter extends AppCompatActivity {
     String Chapter_id="";
 
     String uid="";
-
+    private SwipeRefreshLayout swipeRefreshLayout;
     String url="http://hsoftech.in/Mcq/MobileApi/getallinida_tests_List.php";
 
     @Override
@@ -56,6 +57,7 @@ public class SelectChapter extends AppCompatActivity {
 
         uid=SaveSharedPreference.getUserId(SelectChapter.this);
         TextView txtnm=(TextView)findViewById(R.id.csnm);
+        swipeRefreshLayout = (SwipeRefreshLayout)findViewById(R.id.swipe_sub);
 
         recyclerView = (RecyclerView)findViewById(R.id.subject_list);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(SelectChapter.this);
@@ -66,7 +68,41 @@ public class SelectChapter extends AppCompatActivity {
 
         txtnm.setText(str);
 
-        getListt(Chapter_id);
+
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                try {
+                    swipeRefreshLayout.setRefreshing(true);
+                    if (new ConnectionDetector(SelectChapter.this).isConnectingToInternet()) {
+                        getListt(Chapter_id);
+                    } else {
+                        InternetError.showerro(SelectChapter.this);
+                    }
+
+                } catch (Exception e) {
+
+                }
+            }
+        });
+        swipeRefreshLayout.post(new Runnable() {
+            @Override
+            public void run() {
+                swipeRefreshLayout.setRefreshing(true);
+
+                try {
+                    if (new ConnectionDetector(SelectChapter.this).isConnectingToInternet()) {
+                        getListt(Chapter_id);
+                    } else {
+                        InternetError.showerro(SelectChapter.this);
+                    }
+
+                } catch (Exception e) {
+
+                }
+            }
+        });
+
 
     }
 
@@ -77,7 +113,7 @@ public class SelectChapter extends AppCompatActivity {
                     public void onResponse(String response) {
                         //hiding the progressbar after completion
                         //  progressBar.setVisibility(View.INVISIBLE);
-
+                        swipeRefreshLayout.setRefreshing(false);
 
                         try {
                             //getting the whole json object from the response
@@ -112,6 +148,7 @@ public class SelectChapter extends AppCompatActivity {
 
                         } catch (JSONException e) {
                             e.printStackTrace();
+                            swipeRefreshLayout.setRefreshing(false);
                         }
                     }
                 },
@@ -119,6 +156,7 @@ public class SelectChapter extends AppCompatActivity {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         //displaying the error in toast if occurrs
+                        swipeRefreshLayout.setRefreshing(false);
                         //  Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 }

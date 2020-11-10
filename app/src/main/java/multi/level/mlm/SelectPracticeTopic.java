@@ -44,7 +44,7 @@ String str1="";
          sid=getIntent().getExtras().getString("id");
         str1=getIntent().getExtras().getString("for");
 
-        setTitle("Select Topic");
+        setTitle(str1);
         try
         {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -243,7 +243,7 @@ String str1="";
                             Intent intent=null;
                             if(str1.equalsIgnoreCase("Practice Test"))
                                 intent= new Intent(SelectPracticeTopic.this,PracticeTestList.class);
-                            else if(str1.equalsIgnoreCase("video"))
+                            else if(str1.equalsIgnoreCase("Learn Through Video"))
                                 intent= new Intent(SelectPracticeTopic.this,SelectVideo.class);
                                 else
                                 intent= new Intent(SelectPracticeTopic.this,SelectChapter.class);

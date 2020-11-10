@@ -11,6 +11,21 @@ android:background="@drawable/backq"
 
             android:layout_height="match_parent"
             >
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                                android:text="Select Course"
+                            android:textStyle="bold"
+                            android:fontFamily="@font/poppinsblack"
+                            android:padding="5dp"
+android:textColor="#0A0A0A"
+                            android:background="#BFFFFFFF"
+                            android:gravity="center"
+                            />
         <android.support.v7.widget.RecyclerView
             android:id="@+id/course_list"
 
@@ -22,5 +37,6 @@ android:background="@drawable/backq"
             android:orientation="vertical"
 
             />
+                </LinearLayout>
         </android.support.v4.widget.SwipeRefreshLayout>
 </FrameLayout>
