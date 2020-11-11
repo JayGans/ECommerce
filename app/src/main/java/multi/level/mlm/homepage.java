@@ -35,16 +35,16 @@ import java.util.Map;
  */
 public class homepage extends Fragment
 {
-
+    String url_bal="http://hsoftech.in/Mcq/MobileApi/getprofile.php";
     View rootView;
 String bal="",twoper="0",oneper="0",halfper="0",earnbal="0";
     CardView deposit,earn,withdrawal;
 
-      TextView txtbal,txtearn,txtdepo,txtwith,txtearnbal,txtearnwith;
 
-    TextView txtref;
-    String url="http://hsoftech.in/Mcq/MobileApi/getbal.php";
 
+    TextView txtbal;
+   // String url="http://hsoftech.in/Mcq/MobileApi/getbal.php";
+String uid="";
 
     public homepage()
     {
@@ -57,12 +57,12 @@ String bal="",twoper="0",oneper="0",halfper="0",earnbal="0";
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         rootView= inflater.inflate(R.layout.fragment_homepage, container, false);
-
-
+uid=SaveSharedPreference.getUserId(getActivity());
+txtbal=(TextView)rootView.findViewById(R.id.txtbal);
         deposit=(CardView) rootView.findViewById(R.id.carddepo);
         //withdrawal=(CardView) rootView.findViewById(R.id.cardwith);
-
-        txtbal=(TextView)rootView.findViewById(R.id.crbal);
+getbal();
+      //  txtbal=(TextView)rootView.findViewById(R.id.crbal);
 rootView.findViewById(R.id.laylevel1).setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View view) {
@@ -162,7 +162,60 @@ try{
 
 
 
+    public void getbal() {
 
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, url_bal,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        System.out.print("data" + response);
+                        //  Toast.makeText(Login.this, ""+response, Toast.LENGTH_SHORT).show();
+
+                        try {
+                            //getting the whole json object from the response
+                            JSONObject obj = new JSONObject(response);
+                            JSONArray heroArray = obj.getJSONArray("profile");
+                            // ArrayList<SetGetMethode> result = new ArrayList<>();
+String bal="";
+                            for (int i = 0; i < heroArray.length(); i++) {
+
+                                JSONObject c = heroArray.getJSONObject(i);
+
+                                try {
+                                    bal=c.getString("points");
+                                }catch (Exception e){}
+
+
+                            }
+                            txtbal.setText("AVAILABLE POINT - "+bal);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        //  pDialog.dismiss();
+
+                    }
+                }
+        ) {
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("uid",uid);
+                return params;
+            }
+        };
+
+        //creating a request queue
+        RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
+        // pDialog.show();
+        //adding the string request to request queue
+        requestQueue.add(stringRequest);
+    }
 
 
 }
