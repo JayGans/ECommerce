@@ -3,16 +3,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="#090808"
     android:layout_height="match_parent"
     tools:context="multi.level.mlm.VideoList">
-<android.support.v4.widget.NestedScrollView
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    tools:ignore="MissingConstraints">
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical"
+        android:gravity="center"
         tools:ignore="MissingConstraints">
 
 
@@ -24,7 +23,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/milkynice"
-            android:textSize="18dp"
+            android:textSize="16dp"
             android:textStyle="bold"
             android:background="@color/colorPrimaryDark"
             android:gravity="center"
@@ -38,6 +37,6 @@
 
 
     </LinearLayout>
-</android.support.v4.widget.NestedScrollView>
+
 
 </android.support.constraint.ConstraintLayout>

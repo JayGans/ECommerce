@@ -50,10 +50,10 @@ public class MainActivity extends Activity {
             }
         }catch (Exception e){}
 
-        findViewById(R.id.btfb).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.btgoogle).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Toast.makeText(MainActivity.this, "Work In Progress", Toast.LENGTH_SHORT).show();
             }
         });
 

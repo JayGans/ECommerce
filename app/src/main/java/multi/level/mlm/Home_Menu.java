@@ -98,7 +98,30 @@ TextView username;
        }  else if (id == R.id.nav_profile) {
             fragmentClass=MyProfile.class;
             setTitle("My Profile");
-        } else if (id == R.id.nav_abtsus) {
+        }
+
+        else if (id == R.id.nav_video) {
+            Intent intent= new Intent(Home_Menu.this,SelectCourse.class);
+            intent.putExtra("nm","Learn Through Video");
+            intent.putExtra("for","Learn Through Video");
+            startActivity(intent);
+        }else if (id == R.id.nav_prac) {
+            Intent intent= new Intent(Home_Menu.this,SelectCourse.class);
+            intent.putExtra("nm","Practice Test");
+            intent.putExtra("for","Practice Test");
+            startActivity(intent);
+        }else if (id == R.id.nav_all) {
+            Intent intent= new Intent(Home_Menu.this,SelectCourse.class);
+            intent.putExtra("nm","All India Rank Level");
+            intent.putExtra("for","All India Rank Level");
+            startActivity(intent);
+        }
+        else if (id == R.id.nav_history) {
+            startActivity(new Intent(Home_Menu.this,History.class));
+        }
+
+
+        else if (id == R.id.nav_abtsus) {
             fragmentClass=Aboutus.class;
             setTitle("About us");
         }else if (id == R.id.nav_lout) {

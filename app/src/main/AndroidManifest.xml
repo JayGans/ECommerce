@@ -19,39 +19,39 @@
 
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".History"></activity>
-        <activity android:name=".FinishAllRankExam" />
-        <activity android:name=".SelectVideo" />
-        <activity android:name=".FinishExam" />
-        <activity android:name=".SelectPracticeTopic" />
-        <activity android:name=".SelectSubject" />
-        <activity android:name=".VideoList" />
-        <activity android:name=".QuationList" />
-        <activity android:name=".SelectChapter" />
-        <activity android:name=".SelectCourse" />
-        <activity android:name=".PracticeTest" />
-        <activity android:name=".Login" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".History" android:screenOrientation="portrait"></activity>
+        <activity android:name=".FinishAllRankExam" android:screenOrientation="portrait" />
+        <activity android:name=".SelectVideo" android:screenOrientation="portrait" />
+        <activity android:name=".FinishExam" android:screenOrientation="portrait" />
+        <activity android:name=".SelectPracticeTopic" android:screenOrientation="portrait"/>
+        <activity android:name=".SelectSubject" android:screenOrientation="portrait"/>
+        <activity android:name=".VideoList" android:screenOrientation="portrait"/>
+        <activity android:name=".QuationList" android:screenOrientation="portrait"/>
+        <activity android:name=".SelectChapter" android:screenOrientation="portrait"/>
+        <activity android:name=".SelectCourse" android:screenOrientation="portrait"/>
+        <activity android:name=".PracticeTest" android:screenOrientation="portrait"/>
+        <activity android:name=".Login" android:screenOrientation="portrait"/>
+        <activity android:name=".MainActivity" android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Registration" />
+        <activity android:name=".Registration" android:screenOrientation="portrait"/>
         <activity
             android:name=".Home_Menu"
             android:label="@string/title_activity_home__menu"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar" android:screenOrientation="portrait"/>
         <activity
             android:name=".ChangePassword"
             android:screenOrientation="portrait" />
         <activity
             android:name=".EditProfile"
             android:screenOrientation="portrait" />
-        <activity android:name=".TermsConditions" />
-        <activity android:name=".Withdrawal" />
-        <activity android:name=".PracticeTestList" />
+        <activity android:name=".TermsConditions"  android:screenOrientation="portrait"/>
+        <activity android:name=".Withdrawal" android:screenOrientation="portrait"/>
+        <activity android:name=".PracticeTestList" android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

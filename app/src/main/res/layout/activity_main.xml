@@ -50,6 +50,7 @@ android:layout_above="@id/layt"
                android:fontFamily="@font/milkynice"
                android:text="Login with Google"
                android:id="@+id/btgoogle"
+
                android:background="@drawable/buttonback"/>
 
            <Button
