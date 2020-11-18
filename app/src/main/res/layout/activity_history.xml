@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/backq"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
-    tools:context="multi.level.mlm.History">
+    tools:context="my.edu.wings.History">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/history_list"

@@ -6,7 +6,7 @@
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:background="#ffffff"
     android:layout_height="match_parent"
-    tools:context="multi.level.mlm.Registration">
+    tools:context="my.edu.wings.Registration">
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
 
@@ -43,7 +43,7 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="Hs Foundation\nMCQ\nQuestionBank"
+                                android:text="My Edu Wings\nMCQ\nQuestionBank"
                                 android:textStyle="italic"
 
                                 android:textSize="18sp"

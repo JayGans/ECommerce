@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
 
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
     android:background="#ffffff"
 
     android:layout_height="match_parent"
-    tools:context="multi.level.mlm.MainActivity">
+    tools:context="my.edu.wings.MainActivity">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="200dp"
@@ -25,7 +26,7 @@ android:layout_alignParentTop="true"
             android:fontFamily="@font/milkynice"
 android:textStyle="bold"
             android:textColor="#fff"
-            android:text="Hs Foundation\nMCQ\nQuestionBank"/>
+            android:text="My Edu Wings\nMCQ\nQuestionBank"/>
 
     </LinearLayout>
 
@@ -34,13 +35,26 @@ android:textStyle="bold"
        <LinearLayout
            android:layout_width="match_parent"
            android:layout_height="match_parent"
-           android:gravity="center"
+           android:gravity="center_horizontal"
            android:orientation="vertical"
+
            android:layout_below="@id/layk"
 android:layout_above="@id/layt"
-           android:padding="50dp"
-           android:background="#fff">
 
+           android:background="#fff">
+           <ImageView
+               android:layout_width="130dp"
+               android:layout_height="150dp"
+
+               android:layout_marginBottom="10dp"
+               android:background="@drawable/logo"/>
+           <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_marginRight="50dp"
+               android:layout_marginTop="10dp"
+               android:layout_marginLeft="50dp"
+               android:orientation="vertical">
            <Button
                android:layout_width="match_parent"
                android:layout_height="38dp"
@@ -60,10 +74,18 @@ android:layout_above="@id/layt"
                android:textColor="#3E58A5"
                android:gravity="center"
                android:id="@+id/btfb"
+               android:visibility="gone"
                android:drawableLeft="@drawable/fb"
                android:fontFamily="@font/milkynice"
                android:text="Login with Facebook"
                android:background="@drawable/buttonback_fb"/>
+               <com.facebook.login.widget.LoginButton
+                   android:id="@+id/login_button"
+                   android:layout_width="match_parent"
+                   android:layout_height="60dp"
+                 android:layout_marginTop="25dp"
+                   android:padding="10dp"
+                   />
 
            <LinearLayout
                android:layout_width="match_parent"
@@ -109,8 +131,10 @@ android:layout_above="@id/layt"
                android:fontFamily="@font/milkynice"
                android:text="Login Using Credential"
                android:background="@drawable/buttonback_fb"/>
+           </LinearLayout>
 
-       </LinearLayout>
+</LinearLayout>
+
        <LinearLayout
            android:layout_width="match_parent"
            android:layout_height="wrap_content"

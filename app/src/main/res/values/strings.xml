@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">MCQ</string>
+    <string name="app_name">My Edu Wings</string>
     <string name="title_activity_home__menu">Home_Menu</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
@@ -9,6 +9,9 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="facebook_app_id">988472451638286</string>
+    <string name="fb_login_protocol_scheme">fb988472451638286</string>
 
 
     <string-array name="course">

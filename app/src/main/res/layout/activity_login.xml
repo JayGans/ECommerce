@@ -7,7 +7,7 @@
 
 android:background="#FFFFFFFF"
     android:layout_height="match_parent"
-    tools:context="multi.level.mlm.Registration">
+    tools:context="my.edu.wings.Registration">
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
 
@@ -28,13 +28,13 @@ android:background="#FFFFFFFF"
                     android:layout_width="match_parent"
                     android:layout_height="150dp"
                     android:gravity="center"
-                    android:layout_marginBottom="20dp"
+                    android:layout_marginBottom="0dp"
                     android:background="@drawable/logback"
                     android:orientation="vertical">
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="HS Foundation\nMCQ\nQuestionBank"
+                        android:text="My Edu Wings\nMCQ\nQuestionBank"
                         android:textStyle="italic"
 
                         android:textSize="18sp"
@@ -49,9 +49,13 @@ android:background="#FFFFFFFF"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-
+android:gravity="center"
                     android:padding="10dp">
-
+                    <ImageView
+                        android:layout_width="150dp"
+                        android:layout_height="170dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="@drawable/logo"/>
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -61,7 +65,7 @@ android:background="#FFFFFFFF"
                         android:textSize="18sp"
                         android:fontFamily="@font/milkynice"
                         android:gravity="center"
-                        android:layout_marginBottom="15dp"
+                        android:layout_marginBottom="5dp"
                         android:padding="7dp"
                         android:textColor="@color/backcolor"/>
 
@@ -79,6 +83,8 @@ android:background="#FFFFFFFF"
                             android:id="@+id/edusnm"
                             android:singleLine="true"
                       android:textColorHint="#161515"
+                            android:layout_marginLeft="15dp"
+                            android:layout_marginRight="15dp"
                             android:fontFamily="@font/sf_ui_display_light"
                             android:hint="Mobile Number"
                             android:inputType="number"
@@ -99,6 +105,8 @@ android:background="#FFFFFFFF"
                             android:layout_height="wrap_content"
                           android:textColor="#161515"
                             android:textColorHint="#161515"
+                            android:layout_marginLeft="15dp"
+                            android:layout_marginRight="15dp"
                             android:fontFamily="@font/sf_ui_display_light"
                             android:id="@+id/edpass"
                             android:hint="Password"
@@ -135,8 +143,9 @@ android:background="#FFFFFFFF"
                             android:id="@+id/btlogin"
                             android:layout_weight="1"
                             android:textStyle="bold"
+                            android:layout_marginLeft="15dp"
+                            android:layout_marginRight="15dp"
 
-                            android:layout_marginRight="7dp"
                             android:background="@drawable/buttoncorner"
                             android:fontFamily="@font/milkynice"
                             android:text="S u b m i t"/>
@@ -181,10 +190,7 @@ android:id="@+id/goreg"
                     android:layout_marginBottom="5dp"
                     android:padding="7dp"
                     android:textColor="#208FB9"/>
-<ImageView
-    android:layout_width="match_parent"
-    android:layout_height="200dp"
-    android:background="@drawable/backedu"/>
+
             </LinearLayout>
 
 
