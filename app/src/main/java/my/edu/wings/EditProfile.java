@@ -68,7 +68,7 @@ public class EditProfile extends AppCompatActivity {
                 city=edcity.getText().toString();
                 usnm=edusnm.getText().toString();
                 email=edemail.getText().toString();
-                if(validate(nm,mno,usnm,email,city))
+                if(validate(nm,mno,email,city))
                 {
                     if(new ConnectionDetector(EditProfile.this).isConnectingToInternet()) {
                         Update(nm,mno,usnm,email,city);
@@ -98,7 +98,7 @@ public class EditProfile extends AppCompatActivity {
 
     }
 
-    public boolean validate(String nm,String mno,String usnm,String email,String city) {
+    public boolean validate(String nm,String mno,String email,String city) {
         boolean valid = true;
 
         String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
@@ -110,14 +110,6 @@ public class EditProfile extends AppCompatActivity {
             valid = false;
         } else {
             ednm.setError(null);
-        }
-        if (usnm.isEmpty() || Character.isWhitespace(usnm.charAt(0)))  {
-
-            edusnm.setError("Enter User Name");
-            edusnm.setText("");
-            valid = false;
-        } else {
-            edusnm.setError(null);
         }
 
         if (mno.isEmpty() || mno.length()<10) {

@@ -67,46 +67,57 @@ public class MainActivity extends Activity implements GoogleApiClient.OnConnecti
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        GoogleSignInOptions gso =  new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestEmail()
-                .build();
-        googleApiClient=new GoogleApiClient.Builder(this)
-              //  .enableAutoManage(this,this)
-                .addApi(Auth.GOOGLE_SIGN_IN_API,gso)
-                .build();
-        try{
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                Window window = getWindow();
-                window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-                window.setStatusBarColor(Color.parseColor("#2F90E5"));
-               // window.setNavigationBarColor(Color.parseColor("#c10702"));
-            }
-        }catch (Exception e){}
+        String uss=SaveSharedPreference.getUserId(MainActivity.this);
+        if(!uss.isEmpty())
+        {
 
-        findViewById(R.id.btgoogle).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = Auth.GoogleSignInApi.getSignInIntent(googleApiClient);
-                startActivityForResult(intent,RC_SIGN_IN);
+            if(new ConnectionDetector(MainActivity.this).isConnectingToInternet()) {
+                startActivity(new Intent(MainActivity.this,Home_Menu.class));
+                finish();
             }
-        });
-       // boolean loggedOut = AccessToken.getCurrentAccessToken() == null;
-       findViewById(R.id.btfb).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                       startActivity(new Intent(MainActivity.this,Registration.class));
-                       finish();
+            else InternetError.showerro(MainActivity.this);
+        }else {
+            GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                    .requestEmail()
+                    .build();
+            googleApiClient = new GoogleApiClient.Builder(this)
+                    //  .enableAutoManage(this,this)
+                    .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
+                    .build();
+            try {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    Window window = getWindow();
+                    window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+                    window.setStatusBarColor(Color.parseColor("#2F90E5"));
+                    // window.setNavigationBarColor(Color.parseColor("#c10702"));
+                }
+            } catch (Exception e) {
             }
-        });
-      findViewById(R.id.btcrlog).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this,Login.class));
 
-            }
-        });
+            findViewById(R.id.btgoogle).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = Auth.GoogleSignInApi.getSignInIntent(googleApiClient);
+                    startActivityForResult(intent, RC_SIGN_IN);
+                }
+            });
+            // boolean loggedOut = AccessToken.getCurrentAccessToken() == null;
+            findViewById(R.id.btfb).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    startActivity(new Intent(MainActivity.this, Registration.class));
+                    finish();
+                }
+            });
+            findViewById(R.id.btcrlog).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    startActivity(new Intent(MainActivity.this, Login.class));
 
-        loginButton = findViewById(R.id.login_button);
+                }
+            });
+
+            loginButton = findViewById(R.id.login_button);
 
        /* findViewById(R.id.txtforpass).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -117,55 +128,46 @@ public class MainActivity extends Activity implements GoogleApiClient.OnConnecti
             }
         });*/
 
-       // FacebookSdk.sdkInitialize(getApplicationContext());
-        //AppEventsLogger.activateApp(this);
-        boolean loggedOut = AccessToken.getCurrentAccessToken() == null;
+            // FacebookSdk.sdkInitialize(getApplicationContext());
+            //AppEventsLogger.activateApp(this);
+            boolean loggedOut = AccessToken.getCurrentAccessToken() == null;
 
-        if (!loggedOut) {
+            if (!loggedOut) {
 
 
-            //Using Graph API
-            getUserProfile(AccessToken.getCurrentAccessToken());
-        }
-        loginButton.setReadPermissions(Arrays.asList("email", "public_profile"));
-        callbackManager = CallbackManager.Factory.create();
-
-        loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
-            @Override
-            public void onSuccess(LoginResult loginResult) {
-                // App code
-                //loginResult.getAccessToken();
-                //loginResult.getRecentlyDeniedPermissions()
-                //loginResult.getRecentlyGrantedPermissions()
-              //  Toast.makeText(MainActivity.this, "Done", Toast.LENGTH_SHORT).show();
-              //  boolean loggedIn = AccessToken.getCurrentAccessToken() == null;
-              //  Log.d("API123", loggedIn + " ??");
+                //Using Graph API
                 getUserProfile(AccessToken.getCurrentAccessToken());
-
             }
+            loginButton.setReadPermissions(Arrays.asList("email", "public_profile"));
+            callbackManager = CallbackManager.Factory.create();
 
-            @Override
-            public void onCancel() {
-                // App code
-            }
+            loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
+                @Override
+                public void onSuccess(LoginResult loginResult) {
+                    // App code
+                    //loginResult.getAccessToken();
+                    //loginResult.getRecentlyDeniedPermissions()
+                    //loginResult.getRecentlyGrantedPermissions()
+                    //  Toast.makeText(MainActivity.this, "Done", Toast.LENGTH_SHORT).show();
+                    //  boolean loggedIn = AccessToken.getCurrentAccessToken() == null;
+                    //  Log.d("API123", loggedIn + " ??");
+                    getUserProfile(AccessToken.getCurrentAccessToken());
 
-            @Override
-            public void onError(FacebookException exception) {
-                // App code
-            }
-        });
+                }
 
+                @Override
+                public void onCancel() {
+                    // App code
+                }
 
-        String uss=SaveSharedPreference.getUserId(MainActivity.this);
-        if(!uss.isEmpty())
-        {
+                @Override
+                public void onError(FacebookException exception) {
+                    // App code
+                }
+            });
 
-            if(new ConnectionDetector(MainActivity.this).isConnectingToInternet()) {
-                startActivity(new Intent(MainActivity.this,Home_Menu.class));
-                finish();
-            }
-            else InternetError.showerro(MainActivity.this);
         }
+
 
         try {
             PackageInfo info = getPackageManager().getPackageInfo(
@@ -251,7 +253,10 @@ public class MainActivity extends Activity implements GoogleApiClient.OnConnecti
                     public void onResponse(String response) {
                         System.out.print("data" + response);
                         //  Toast.makeText(Login.this, ""+response, Toast.LENGTH_SHORT).show();
-                        pDialog.dismiss();
+                        try {
+
+
+                        pDialog.dismiss();}catch (Exception e){}
 
                         try {
                             JSONObject obj = new JSONObject(response);

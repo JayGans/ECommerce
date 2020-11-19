@@ -14,7 +14,7 @@
 
         android:layout_height="match_parent"
 
-        card_view:cardBackgroundColor="#97FFFFFF"
+        card_view:cardBackgroundColor="#3BE0DBDB"
 
         card_view:cardElevation="0dp"
 

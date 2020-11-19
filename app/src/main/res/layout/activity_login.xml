@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
 
-android:background="#FFFFFFFF"
+android:background="@drawable/back"
     android:layout_height="match_parent"
     tools:context="my.edu.wings.Registration">
     <android.support.v4.widget.NestedScrollView
@@ -26,17 +26,17 @@ android:background="#FFFFFFFF"
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="150dp"
+                    android:layout_height="250dp"
                     android:gravity="center"
                     android:layout_marginBottom="0dp"
-                    android:background="@drawable/logback"
+
                     android:orientation="vertical">
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="My Edu Wings\nMCQ\nQuestionBank"
                         android:textStyle="italic"
-
+android:visibility="invisible"
                         android:textSize="18sp"
                         android:fontFamily="@font/milkynice"
                         android:gravity="center"
@@ -50,10 +50,13 @@ android:background="#FFFFFFFF"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
 android:gravity="center"
+                    android:layout_marginTop="30dp"
+                    android:background="#BFFFFFFF"
                     android:padding="10dp">
                     <ImageView
                         android:layout_width="150dp"
                         android:layout_height="170dp"
+                        android:visibility="gone"
                         android:layout_marginBottom="10dp"
                         android:background="@drawable/logo"/>
                     <TextView
@@ -169,7 +172,7 @@ android:gravity="center"
                     android:layout_height="wrap_content"
                     android:text="Forgot Password ?"
                     android:textStyle="normal"
-
+                    android:background="#BFFFFFFF"
                     android:textSize="14sp"
                     android:fontFamily="@font/sf_ui_display_light"
                     android:gravity="center"
@@ -181,6 +184,7 @@ android:gravity="center"
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:background="#BFFFFFFF"
                     android:text="Not a member? Create Account"
                     android:textStyle="normal"
 android:id="@+id/goreg"

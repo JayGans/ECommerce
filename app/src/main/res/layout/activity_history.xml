@@ -8,7 +8,7 @@
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/history_list"
-
+android:background="#3BE0DBDB"
         android:layout_width="match_parent"
         android:layout_marginTop="0dp"
         android:layout_height="match_parent"
@@ -18,4 +18,13 @@
 
         />
 
+    <TextView
+        android:layout_width="match_parent"
+        android:text="No Records Available."
+        android:gravity="center"
+        android:textSize="20dp"
+        android:id="@+id/nor"
+        android:visibility="gone"
+        android:background="#37FFFFFF"
+        android:layout_height="match_parent"/>
 </FrameLayout>

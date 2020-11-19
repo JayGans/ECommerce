@@ -97,7 +97,12 @@ pDialog.dismiss();
 
 
                             }
-                            recyclerView.setAdapter(new ItemAdapter(list1));
+                            if(list1.size()==0)
+                                findViewById(R.id.nor).setVisibility(View.VISIBLE);
+                            else {
+                                recyclerView.setAdapter(new ItemAdapter(list1));
+                                findViewById(R.id.nor).setVisibility(View.GONE);
+                            }
 
 
 

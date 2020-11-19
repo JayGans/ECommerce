@@ -81,7 +81,7 @@ public class Registration extends AppCompatActivity {
                 adrs=edadrs.getText().toString();
                 city=edcity.getText().toString();
                 pass=edpass.getText().toString();
-                if(validate(nm,mno,adrs,pass,city))
+                if(validate(nm,mno,pass,city))
                 {
 
                         loaddataList(nm, mno, email, adrs,city, pass);
@@ -112,7 +112,7 @@ public class Registration extends AppCompatActivity {
 
     }
 
-    public boolean validate(String nm,String mno,String adrs,String pass,String city) {
+    public boolean validate(String nm,String mno,String pass,String city) {
         boolean valid = true;
 
         String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
@@ -134,13 +134,7 @@ public class Registration extends AppCompatActivity {
             edmno.setError(null);
         }
 
-        if(adrs.isEmpty()) {
 
-            edadrs.setError("Enter Address");
-            valid = false;
-        } else {
-            edadrs.setError(null);
-        }
         if(city.isEmpty()) {
 
             edcity.setError("Enter City Name");
